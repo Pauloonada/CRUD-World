@@ -3,8 +3,7 @@
 Aplicação web completa desenvolvida em **HTML, CSS, JavaScript, PHP e PostgreSQL**, com foco no gerenciamento de dados geográficos.  
 O sistema permite cadastrar, consultar, editar e excluir **países e cidades**, garantindo integridade dos dados e integração com APIs externas para enriquecer as informações.  
 
-Hospedagem no **Railway**, tanto do **site (PHP + Front End)** quanto do **banco de dados (PostgreSQL)**.  
-Gerenciamento e consultas ao banco também podem ser feitas via **DBeaver**.  
+Hospedagem no **Railway**, tanto do **site (PHP + Front End)** quanto do **banco de dados (PostgreSQL)**.
 
 ---
 

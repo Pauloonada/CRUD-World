@@ -1,0 +1,753 @@
+{
+"cidades": [
+	{
+		"id" : 1,
+		"nome" : "São Paulo",
+		"populacao" : 12300000,
+		"id_pais" : 1
+	},
+	{
+		"id" : 2,
+		"nome" : "Rio de Janeiro",
+		"populacao" : 6700000,
+		"id_pais" : 1
+	},
+	{
+		"id" : 3,
+		"nome" : "Brasília",
+		"populacao" : 3100000,
+		"id_pais" : 1
+	},
+	{
+		"id" : 4,
+		"nome" : "Salvador",
+		"populacao" : 2900000,
+		"id_pais" : 1
+	},
+	{
+		"id" : 5,
+		"nome" : "Fortaleza",
+		"populacao" : 2700000,
+		"id_pais" : 1
+	},
+	{
+		"id" : 6,
+		"nome" : "San Juan",
+		"populacao" : 340000,
+		"id_pais" : 2
+	},
+	{
+		"id" : 7,
+		"nome" : "Ponce",
+		"populacao" : 140000,
+		"id_pais" : 2
+	},
+	{
+		"id" : 8,
+		"nome" : "Bayamón",
+		"populacao" : 180000,
+		"id_pais" : 2
+	},
+	{
+		"id" : 9,
+		"nome" : "Carolina",
+		"populacao" : 170000,
+		"id_pais" : 2
+	},
+	{
+		"id" : 10,
+		"nome" : "Caguas",
+		"populacao" : 130000,
+		"id_pais" : 2
+	},
+	{
+		"id" : 11,
+		"nome" : "Santiago",
+		"populacao" : 6200000,
+		"id_pais" : 3
+	},
+	{
+		"id" : 12,
+		"nome" : "Valparaíso",
+		"populacao" : 300000,
+		"id_pais" : 3
+	},
+	{
+		"id" : 13,
+		"nome" : "Concepción",
+		"populacao" : 220000,
+		"id_pais" : 3
+	},
+	{
+		"id" : 14,
+		"nome" : "La Serena",
+		"populacao" : 200000,
+		"id_pais" : 3
+	},
+	{
+		"id" : 15,
+		"nome" : "Antofagasta",
+		"populacao" : 360000,
+		"id_pais" : 3
+	},
+	{
+		"id" : 16,
+		"nome" : "Cidade do México",
+		"populacao" : 9200000,
+		"id_pais" : 4
+	},
+	{
+		"id" : 17,
+		"nome" : "Guadalajara",
+		"populacao" : 1500000,
+		"id_pais" : 4
+	},
+	{
+		"id" : 18,
+		"nome" : "Monterrey",
+		"populacao" : 1100000,
+		"id_pais" : 4
+	},
+	{
+		"id" : 19,
+		"nome" : "Puebla",
+		"populacao" : 1500000,
+		"id_pais" : 4
+	},
+	{
+		"id" : 20,
+		"nome" : "Tijuana",
+		"populacao" : 1900000,
+		"id_pais" : 4
+	},
+	{
+		"id" : 21,
+		"nome" : "Toronto",
+		"populacao" : 2800000,
+		"id_pais" : 5
+	},
+	{
+		"id" : 22,
+		"nome" : "Vancouver",
+		"populacao" : 670000,
+		"id_pais" : 5
+	},
+	{
+		"id" : 23,
+		"nome" : "Montreal",
+		"populacao" : 1700000,
+		"id_pais" : 5
+	},
+	{
+		"id" : 24,
+		"nome" : "Ottawa",
+		"populacao" : 1000000,
+		"id_pais" : 5
+	},
+	{
+		"id" : 25,
+		"nome" : "Calgary",
+		"populacao" : 1200000,
+		"id_pais" : 5
+	},
+	{
+		"id" : 26,
+		"nome" : "Berlim",
+		"populacao" : 3700000,
+		"id_pais" : 6
+	},
+	{
+		"id" : 27,
+		"nome" : "Hamburgo",
+		"populacao" : 1800000,
+		"id_pais" : 6
+	},
+	{
+		"id" : 28,
+		"nome" : "Munique",
+		"populacao" : 1500000,
+		"id_pais" : 6
+	},
+	{
+		"id" : 29,
+		"nome" : "Colônia",
+		"populacao" : 1100000,
+		"id_pais" : 6
+	},
+	{
+		"id" : 30,
+		"nome" : "Frankfurt",
+		"populacao" : 760000,
+		"id_pais" : 6
+	},
+	{
+		"id" : 31,
+		"nome" : "Paris",
+		"populacao" : 2100000,
+		"id_pais" : 7
+	},
+	{
+		"id" : 32,
+		"nome" : "Marselha",
+		"populacao" : 870000,
+		"id_pais" : 7
+	},
+	{
+		"id" : 33,
+		"nome" : "Lyon",
+		"populacao" : 520000,
+		"id_pais" : 7
+	},
+	{
+		"id" : 34,
+		"nome" : "Toulouse",
+		"populacao" : 490000,
+		"id_pais" : 7
+	},
+	{
+		"id" : 35,
+		"nome" : "Nice",
+		"populacao" : 340000,
+		"id_pais" : 7
+	},
+	{
+		"id" : 36,
+		"nome" : "Madri",
+		"populacao" : 3200000,
+		"id_pais" : 8
+	},
+	{
+		"id" : 37,
+		"nome" : "Barcelona",
+		"populacao" : 1600000,
+		"id_pais" : 8
+	},
+	{
+		"id" : 38,
+		"nome" : "Valência",
+		"populacao" : 800000,
+		"id_pais" : 8
+	},
+	{
+		"id" : 39,
+		"nome" : "Sevilha",
+		"populacao" : 690000,
+		"id_pais" : 8
+	},
+	{
+		"id" : 40,
+		"nome" : "Bilbao",
+		"populacao" : 350000,
+		"id_pais" : 8
+	},
+	{
+		"id" : 41,
+		"nome" : "Roma",
+		"populacao" : 2800000,
+		"id_pais" : 9
+	},
+	{
+		"id" : 42,
+		"nome" : "Milão",
+		"populacao" : 1400000,
+		"id_pais" : 9
+	},
+	{
+		"id" : 43,
+		"nome" : "Nápoles",
+		"populacao" : 950000,
+		"id_pais" : 9
+	},
+	{
+		"id" : 44,
+		"nome" : "Turim",
+		"populacao" : 870000,
+		"id_pais" : 9
+	},
+	{
+		"id" : 45,
+		"nome" : "Palermo",
+		"populacao" : 650000,
+		"id_pais" : 9
+	},
+	{
+		"id" : 46,
+		"nome" : "Londres",
+		"populacao" : 8900000,
+		"id_pais" : 10
+	},
+	{
+		"id" : 47,
+		"nome" : "Manchester",
+		"populacao" : 550000,
+		"id_pais" : 10
+	},
+	{
+		"id" : 48,
+		"nome" : "Birmingham",
+		"populacao" : 1100000,
+		"id_pais" : 10
+	},
+	{
+		"id" : 49,
+		"nome" : "Liverpool",
+		"populacao" : 500000,
+		"id_pais" : 10
+	},
+	{
+		"id" : 50,
+		"nome" : "Edimburgo",
+		"populacao" : 530000,
+		"id_pais" : 10
+	},
+	{
+		"id" : 51,
+		"nome" : "Lagos",
+		"populacao" : 15000000,
+		"id_pais" : 11
+	},
+	{
+		"id" : 52,
+		"nome" : "Abuja",
+		"populacao" : 3600000,
+		"id_pais" : 11
+	},
+	{
+		"id" : 53,
+		"nome" : "Kano",
+		"populacao" : 4200000,
+		"id_pais" : 11
+	},
+	{
+		"id" : 54,
+		"nome" : "Ibadan",
+		"populacao" : 3500000,
+		"id_pais" : 11
+	},
+	{
+		"id" : 55,
+		"nome" : "Port Harcourt",
+		"populacao" : 1300000,
+		"id_pais" : 11
+	},
+	{
+		"id" : 56,
+		"nome" : "Cairo",
+		"populacao" : 9900000,
+		"id_pais" : 12
+	},
+	{
+		"id" : 57,
+		"nome" : "Alexandria",
+		"populacao" : 5200000,
+		"id_pais" : 12
+	},
+	{
+		"id" : 58,
+		"nome" : "Giza",
+		"populacao" : 8700000,
+		"id_pais" : 12
+	},
+	{
+		"id" : 59,
+		"nome" : "Luxor",
+		"populacao" : 500000,
+		"id_pais" : 12
+	},
+	{
+		"id" : 60,
+		"nome" : "Assuã",
+		"populacao" : 320000,
+		"id_pais" : 12
+	},
+	{
+		"id" : 61,
+		"nome" : "Joanesburgo",
+		"populacao" : 5600000,
+		"id_pais" : 13
+	},
+	{
+		"id" : 62,
+		"nome" : "Pretória",
+		"populacao" : 2400000,
+		"id_pais" : 13
+	},
+	{
+		"id" : 63,
+		"nome" : "Durban",
+		"populacao" : 3800000,
+		"id_pais" : 13
+	},
+	{
+		"id" : 64,
+		"nome" : "Cidade do Cabo",
+		"populacao" : 4600000,
+		"id_pais" : 13
+	},
+	{
+		"id" : 65,
+		"nome" : "Port Elizabeth",
+		"populacao" : 1200000,
+		"id_pais" : 13
+	},
+	{
+		"id" : 66,
+		"nome" : "Addis Ababa",
+		"populacao" : 5000000,
+		"id_pais" : 14
+	},
+	{
+		"id" : 67,
+		"nome" : "Dire Dawa",
+		"populacao" : 450000,
+		"id_pais" : 14
+	},
+	{
+		"id" : 68,
+		"nome" : "Mekelle",
+		"populacao" : 310000,
+		"id_pais" : 14
+	},
+	{
+		"id" : 69,
+		"nome" : "Gondar",
+		"populacao" : 340000,
+		"id_pais" : 14
+	},
+	{
+		"id" : 70,
+		"nome" : "Bahir Dar",
+		"populacao" : 400000,
+		"id_pais" : 14
+	},
+	{
+		"id" : 71,
+		"nome" : "Casablanca",
+		"populacao" : 3400000,
+		"id_pais" : 15
+	},
+	{
+		"id" : 72,
+		"nome" : "Rabat",
+		"populacao" : 580000,
+		"id_pais" : 15
+	},
+	{
+		"id" : 73,
+		"nome" : "Marrakech",
+		"populacao" : 950000,
+		"id_pais" : 15
+	},
+	{
+		"id" : 74,
+		"nome" : "Fez",
+		"populacao" : 1100000,
+		"id_pais" : 15
+	},
+	{
+		"id" : 75,
+		"nome" : "Tânger",
+		"populacao" : 950000,
+		"id_pais" : 15
+	},
+	{
+		"id" : 76,
+		"nome" : "Pequim",
+		"populacao" : 21500000,
+		"id_pais" : 16
+	},
+	{
+		"id" : 77,
+		"nome" : "Xangai",
+		"populacao" : 26000000,
+		"id_pais" : 16
+	},
+	{
+		"id" : 78,
+		"nome" : "Cantão",
+		"populacao" : 15000000,
+		"id_pais" : 16
+	},
+	{
+		"id" : 79,
+		"nome" : "Shenzhen",
+		"populacao" : 13000000,
+		"id_pais" : 16
+	},
+	{
+		"id" : 80,
+		"nome" : "Chongqing",
+		"populacao" : 31000000,
+		"id_pais" : 16
+	},
+	{
+		"id" : 81,
+		"nome" : "Nova Délhi",
+		"populacao" : 32000000,
+		"id_pais" : 17
+	},
+	{
+		"id" : 82,
+		"nome" : "Mumbai",
+		"populacao" : 21000000,
+		"id_pais" : 17
+	},
+	{
+		"id" : 83,
+		"nome" : "Calcutá",
+		"populacao" : 15000000,
+		"id_pais" : 17
+	},
+	{
+		"id" : 84,
+		"nome" : "Bangalore",
+		"populacao" : 11000000,
+		"id_pais" : 17
+	},
+	{
+		"id" : 85,
+		"nome" : "Chennai",
+		"populacao" : 11000000,
+		"id_pais" : 17
+	},
+	{
+		"id" : 86,
+		"nome" : "Tóquio",
+		"populacao" : 14000000,
+		"id_pais" : 18
+	},
+	{
+		"id" : 87,
+		"nome" : "Osaka",
+		"populacao" : 2700000,
+		"id_pais" : 18
+	},
+	{
+		"id" : 88,
+		"nome" : "Quioto",
+		"populacao" : 1500000,
+		"id_pais" : 18
+	},
+	{
+		"id" : 89,
+		"nome" : "Yokohama",
+		"populacao" : 3700000,
+		"id_pais" : 18
+	},
+	{
+		"id" : 90,
+		"nome" : "Hiroshima",
+		"populacao" : 1200000,
+		"id_pais" : 18
+	},
+	{
+		"id" : 91,
+		"nome" : "Seul",
+		"populacao" : 9700000,
+		"id_pais" : 19
+	},
+	{
+		"id" : 92,
+		"nome" : "Busan",
+		"populacao" : 3400000,
+		"id_pais" : 19
+	},
+	{
+		"id" : 93,
+		"nome" : "Incheon",
+		"populacao" : 2900000,
+		"id_pais" : 19
+	},
+	{
+		"id" : 94,
+		"nome" : "Daegu",
+		"populacao" : 2400000,
+		"id_pais" : 19
+	},
+	{
+		"id" : 95,
+		"nome" : "Daejeon",
+		"populacao" : 1500000,
+		"id_pais" : 19
+	},
+	{
+		"id" : 96,
+		"nome" : "Riad",
+		"populacao" : 7700000,
+		"id_pais" : 20
+	},
+	{
+		"id" : 97,
+		"nome" : "Jidá",
+		"populacao" : 4300000,
+		"id_pais" : 20
+	},
+	{
+		"id" : 98,
+		"nome" : "Meca",
+		"populacao" : 2000000,
+		"id_pais" : 20
+	},
+	{
+		"id" : 99,
+		"nome" : "Medina",
+		"populacao" : 1300000,
+		"id_pais" : 20
+	},
+	{
+		"id" : 100,
+		"nome" : "Dammam",
+		"populacao" : 1200000,
+		"id_pais" : 20
+	},
+	{
+		"id" : 101,
+		"nome" : "Sydney",
+		"populacao" : 5300000,
+		"id_pais" : 21
+	},
+	{
+		"id" : 102,
+		"nome" : "Melbourne",
+		"populacao" : 5000000,
+		"id_pais" : 21
+	},
+	{
+		"id" : 103,
+		"nome" : "Brisbane",
+		"populacao" : 2500000,
+		"id_pais" : 21
+	},
+	{
+		"id" : 104,
+		"nome" : "Perth",
+		"populacao" : 2100000,
+		"id_pais" : 21
+	},
+	{
+		"id" : 105,
+		"nome" : "Adelaide",
+		"populacao" : 1400000,
+		"id_pais" : 21
+	},
+	{
+		"id" : 106,
+		"nome" : "Auckland",
+		"populacao" : 1700000,
+		"id_pais" : 22
+	},
+	{
+		"id" : 107,
+		"nome" : "Wellington",
+		"populacao" : 220000,
+		"id_pais" : 22
+	},
+	{
+		"id" : 108,
+		"nome" : "Christchurch",
+		"populacao" : 380000,
+		"id_pais" : 22
+	},
+	{
+		"id" : 109,
+		"nome" : "Hamilton",
+		"populacao" : 180000,
+		"id_pais" : 22
+	},
+	{
+		"id" : 110,
+		"nome" : "Dunedin",
+		"populacao" : 120000,
+		"id_pais" : 22
+	},
+	{
+		"id" : 111,
+		"nome" : "Suva",
+		"populacao" : 93000,
+		"id_pais" : 23
+	},
+	{
+		"id" : 112,
+		"nome" : "Nadi",
+		"populacao" : 42000,
+		"id_pais" : 23
+	},
+	{
+		"id" : 113,
+		"nome" : "Lautoka",
+		"populacao" : 71000,
+		"id_pais" : 23
+	},
+	{
+		"id" : 114,
+		"nome" : "Labasa",
+		"populacao" : 28000,
+		"id_pais" : 23
+	},
+	{
+		"id" : 115,
+		"nome" : "Ba",
+		"populacao" : 15000,
+		"id_pais" : 23
+	},
+	{
+		"id" : 116,
+		"nome" : "Port Moresby",
+		"populacao" : 400000,
+		"id_pais" : 24
+	},
+	{
+		"id" : 117,
+		"nome" : "Lae",
+		"populacao" : 100000,
+		"id_pais" : 24
+	},
+	{
+		"id" : 118,
+		"nome" : "Mount Hagen",
+		"populacao" : 46000,
+		"id_pais" : 24
+	},
+	{
+		"id" : 119,
+		"nome" : "Madang",
+		"populacao" : 30000,
+		"id_pais" : 24
+	},
+	{
+		"id" : 120,
+		"nome" : "Goroka",
+		"populacao" : 25000,
+		"id_pais" : 24
+	},
+	{
+		"id" : 121,
+		"nome" : "Apia",
+		"populacao" : 40000,
+		"id_pais" : 25
+	},
+	{
+		"id" : 122,
+		"nome" : "Vaitele",
+		"populacao" : 7000,
+		"id_pais" : 25
+	},
+	{
+		"id" : 123,
+		"nome" : "Faleula",
+		"populacao" : 4000,
+		"id_pais" : 25
+	},
+	{
+		"id" : 124,
+		"nome" : "Siusega",
+		"populacao" : 3000,
+		"id_pais" : 25
+	},
+	{
+		"id" : 125,
+		"nome" : "Malie",
+		"populacao" : 2000,
+		"id_pais" : 25
+	}
+]}

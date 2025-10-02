@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "module": "nodenext",
+        "target": "es2020",
+        "moduleResolution": "nodenext",
+        "esModuleInterop": true,
+        "strict": true,
+        "outDir": "dist",
+    },
+    "include": ["src/*.ts", "src/**/*.ts"],
+}

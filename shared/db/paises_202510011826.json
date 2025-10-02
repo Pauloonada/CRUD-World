@@ -1,0 +1,178 @@
+{
+"paises": [
+	{
+		"id" : 1,
+		"nome_oficial" : "Brazil",
+		"continente" : "Américas",
+		"populacao" : 212000000,
+		"idioma_principal" : "Português"
+	},
+	{
+		"id" : 2,
+		"nome_oficial" : "Porto Rico",
+		"continente" : "Américas",
+		"populacao" : 124000000,
+		"idioma_principal" : "Espanhol"
+	},
+	{
+		"id" : 3,
+		"nome_oficial" : "Chile",
+		"continente" : "Américas",
+		"populacao" : 20000000,
+		"idioma_principal" : "Espanhol"
+	},
+	{
+		"id" : 4,
+		"nome_oficial" : "México",
+		"continente" : "Américas",
+		"populacao" : 131000000,
+		"idioma_principal" : "Espanhol"
+	},
+	{
+		"id" : 5,
+		"nome_oficial" : "Canadá",
+		"continente" : "Américas",
+		"populacao" : 41300000,
+		"idioma_principal" : "Inglês"
+	},
+	{
+		"id" : 6,
+		"nome_oficial" : "Alemanha",
+		"continente" : "Europa",
+		"populacao" : 83510000,
+		"idioma_principal" : "Alemão"
+	},
+	{
+		"id" : 7,
+		"nome_oficial" : "França",
+		"continente" : "Europa",
+		"populacao" : 68000000,
+		"idioma_principal" : "Francês"
+	},
+	{
+		"id" : 8,
+		"nome_oficial" : "Espanha",
+		"continente" : "Europa",
+		"populacao" : 48000000,
+		"idioma_principal" : "Espanhol"
+	},
+	{
+		"id" : 9,
+		"nome_oficial" : "Itália",
+		"continente" : "Europa",
+		"populacao" : 59000000,
+		"idioma_principal" : "Italiano"
+	},
+	{
+		"id" : 10,
+		"nome_oficial" : "Reino Unido",
+		"continente" : "Europa",
+		"populacao" : 68000000,
+		"idioma_principal" : "Inglês"
+	},
+	{
+		"id" : 11,
+		"nome_oficial" : "Nigéria",
+		"continente" : "África",
+		"populacao" : 223000000,
+		"idioma_principal" : "Inglês"
+	},
+	{
+		"id" : 12,
+		"nome_oficial" : "Egito",
+		"continente" : "África",
+		"populacao" : 112000000,
+		"idioma_principal" : "Árabe"
+	},
+	{
+		"id" : 13,
+		"nome_oficial" : "África do Sul",
+		"continente" : "África",
+		"populacao" : 61000000,
+		"idioma_principal" : "Inglês"
+	},
+	{
+		"id" : 14,
+		"nome_oficial" : "Etiópia",
+		"continente" : "África",
+		"populacao" : 126000000,
+		"idioma_principal" : "Amárico"
+	},
+	{
+		"id" : 15,
+		"nome_oficial" : "Marrocos",
+		"continente" : "África",
+		"populacao" : 37000000,
+		"idioma_principal" : "Árabe"
+	},
+	{
+		"id" : 16,
+		"nome_oficial" : "China",
+		"continente" : "Ásia",
+		"populacao" : 1412000000,
+		"idioma_principal" : "Mandarim"
+	},
+	{
+		"id" : 17,
+		"nome_oficial" : "Índia",
+		"continente" : "Ásia",
+		"populacao" : 1426000000,
+		"idioma_principal" : "Hindi"
+	},
+	{
+		"id" : 18,
+		"nome_oficial" : "Japão",
+		"continente" : "Ásia",
+		"populacao" : 124000000,
+		"idioma_principal" : "Japonês"
+	},
+	{
+		"id" : 19,
+		"nome_oficial" : "Coreia do Sul",
+		"continente" : "Ásia",
+		"populacao" : 52000000,
+		"idioma_principal" : "Coreano"
+	},
+	{
+		"id" : 20,
+		"nome_oficial" : "Arábia Saudita",
+		"continente" : "Ásia",
+		"populacao" : 37000000,
+		"idioma_principal" : "Árabe"
+	},
+	{
+		"id" : 21,
+		"nome_oficial" : "Austrália",
+		"continente" : "Oceania",
+		"populacao" : 26000000,
+		"idioma_principal" : "Inglês"
+	},
+	{
+		"id" : 22,
+		"nome_oficial" : "Nova Zelândia",
+		"continente" : "Oceania",
+		"populacao" : 5200000,
+		"idioma_principal" : "Inglês"
+	},
+	{
+		"id" : 23,
+		"nome_oficial" : "Fiji",
+		"continente" : "Oceania",
+		"populacao" : 930000,
+		"idioma_principal" : "Inglês"
+	},
+	{
+		"id" : 24,
+		"nome_oficial" : "Papua-Nova Guiné",
+		"continente" : "Oceania",
+		"populacao" : 9300000,
+		"idioma_principal" : "Inglês"
+	},
+	{
+		"id" : 25,
+		"nome_oficial" : "Samoa",
+		"continente" : "Oceania",
+		"populacao" : 225000,
+		"idioma_principal" : "Samoano"
+	}
+]}
