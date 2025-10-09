@@ -10,18 +10,18 @@ export async function getPaisById(id: number){
     return result.rows[0];
 }
 
-export async function createPais(nome: string, continente: string, populacao: number, idioma: string){
+export async function createPais(nome_oficial: string, continente: string, populacao: number, idioma_principal: string){
     const result = await pool.query(
         'INSERT INTO paises (nome_oficial, continente, populacao, idioma_principal) VALUES ($1, $2, $3, $4) RETURNING *',
-        [nome, continente, populacao, idioma]
+        [nome_oficial, continente, populacao, idioma_principal]
     );
     return result.rows[0];
 }
 
-export async function updatePais(id: number, nome: string, continente: string, populacao: number, idioma: string){
+export async function updatePais(id: number, nome_oficial: string, continente: string, populacao: number, idioma_principal: string){
     const result = await pool.query(
         'UPDATE paises SET nome = $1, continente = $2, populacao = $3, idioma_principal = $4 WHERE id = $5 RETURNING *',
-        [nome, continente, populacao, idioma, id]
+        [nome_oficial, continente, populacao, idioma_principal, id]
     );
     return result.rows[0];
 }
