@@ -1,0 +1,35 @@
+<div class="modal fade" id="modalAdicionarPais" tabindex="-1" aria-labelledby="modalAdicionarPaisLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAdicionarPaisLabel">Adicionar Novo País</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <form id="formAddPais" method="POST" action="./PaisRequestHandler.php">
+                <input type="hidden" name="action" value="add">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="nome_oficial" class="form-label">Nome Oficial</label>
+                        <input type="text" name="nome_oficial" id="nome_oficial" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="continente" class="form-label">Continente</label>
+                        <input type="text" name="continente" id="continente" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="populacao" class="form-label">População</label>
+                        <input type="number" name="populacao" id="populacao" class="form-control" required step="10" min="1000">
+                    </div>
+                    <div class="mb-3">
+                        <label for="idioma_principal" class="form-label">Idioma Principal</label>
+                        <input type="text" name="idioma_principal" id="idioma_principal" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

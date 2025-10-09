@@ -22,8 +22,8 @@ export async function getById(req: Request, res: Response){
 
 export async function create(req: Request, res: Response){
     try{
-        const { nome, sigla } = req.body;
-        const newPais = await paisesService.createPais(nome, sigla);
+        const { nome, continente, populacao, idioma } = req.body;
+        const newPais = await paisesService.createPais(nome, continente, populacao, idioma);
         res.status(201).json(newPais);
     }catch(error){
         res.status(500).json({ error: 'Error creating country' });
@@ -33,9 +33,9 @@ export async function create(req: Request, res: Response){
 export async function update(req: Request, res: Response){
     try{
         const id = Number(req.params.id);
-        const { nome, sigla } = req.body;
+        const { nome, continente, populacao, idioma } = req.body;
 
-        const updatedPais = await paisesService.updatePais(id, nome, sigla);
+        const updatedPais = await paisesService.updatePais(id, nome, continente, populacao, idioma);
         if(!updatedPais) return res.status(404).json({ error: 'Country not found' });
 
         res.json(updatedPais);
