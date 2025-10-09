@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="modalEditarPaisLabel">Editar País</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
             </div>
-            <form id="formEditarPais" method="POST" action="../PaisRequestHandler.php">
+            <form id="formEditarPais" method="POST" action="./PaisRequestHandler.php">
                 <input type="hidden" name="action" value="edit">
                 <input type="hidden" id="edit_id" name="id">
                 <div class="modal-body">

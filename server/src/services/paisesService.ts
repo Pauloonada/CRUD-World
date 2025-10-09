@@ -20,7 +20,7 @@ export async function createPais(nome_oficial: string, continente: string, popul
 
 export async function updatePais(id: number, nome_oficial: string, continente: string, populacao: number, idioma_principal: string){
     const result = await pool.query(
-        'UPDATE paises SET nome = $1, continente = $2, populacao = $3, idioma_principal = $4 WHERE id = $5 RETURNING *',
+        'UPDATE paises SET nome_oficial = $1, continente = $2, populacao = $3, idioma_principal = $4 WHERE id = $5 RETURNING *',
         [nome_oficial, continente, populacao, idioma_principal, id]
     );
     return result.rows[0];
