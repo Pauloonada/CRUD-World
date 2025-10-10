@@ -29,11 +29,11 @@
     <tbody>
         <?php foreach($paises as $pais): ?>
             <tr>
-                <td><?php echo $pais['id']; ?></td>
-                <td><?php echo $pais['nome_oficial']; ?></td>
-                <td><?php echo $pais['continente']; ?></td>
-                <td><?php echo $pais['populacao']; ?></td>
-                <td><?php echo $pais['idioma_principal']; ?></td>
+                <td><?= $pais['id']; ?></td>
+                <td><?= $pais['nome_oficial']; ?></td>
+                <td><?= $pais['continente']; ?></td>
+                <td><?= $pais['populacao']; ?></td>
+                <td><?= $pais['idioma_principal']; ?></td>
                 <td class="text-center">
                     <button type="button"
                         class="btn btn-warning btn-sm btn-edit"
@@ -42,6 +42,8 @@
                         data-continente="<?= $pais['continente'] ?>"
                         data-populacao="<?= $pais['populacao'] ?>"
                         data-idioma="<?= $pais['idioma_principal'] ?>"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEditarPais"
                     >
                         Editar
                     </button>

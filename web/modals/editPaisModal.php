@@ -15,7 +15,14 @@
                     </div>
                     <div class="mb-3">
                         <label for="edit_continente" class="form-label">Continente</label>
-                        <input type="text" name="continente" id="edit_continente" class="form-control" required>
+                        <select name="continente" id="edit_continente" class="form-select" required>
+                            <option value="" disabled selected>--SELECIONE UMA OPÇÃO--</option>
+                            <option value="África" class="form-control">África</option>
+                            <option value="Américas" class="form-control">Américas</option>
+                            <option value="Ásia" class="form-control">Ásia</option>
+                            <option value="Europa" class="form-control">Europa</option>
+                            <option value="Oceania" class="form-control">Ocenia</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="edit_populacao" class="form-label">População</label>
