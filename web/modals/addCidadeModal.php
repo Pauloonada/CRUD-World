@@ -14,7 +14,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="pais" class="form-label">Continente</label>
-                        <select name="pais" id="id_pais" class="form-select" required>
+                        <select name="id_pais" id="id_pais" class="form-select" required>
                             <?php 
                                 require_once __DIR__ . '/../src/services/PaisService.php';
                                 $paisService = new PaisService();

@@ -20,16 +20,16 @@
 
         switch($action){
             case 'add':
-                $ok = $controller->criarPais($data);
-                header('Location: ./paises.php?status=' . ($ok ? 'success' : 'error'));
+                $result = $controller->criarPais($data);
+                header('Location: ./paises.php?status=' . ($result && !isset($result['error']) ? 'success' : 'error'));
                 break;
             case 'edit':
-                $ok = $controller->editarPais($data['id'], $data);
-                header('Location: ./paises.php?status=' . ($ok ? 'success' : 'error'));
+                $result = $controller->editarPais($data['id'], $data);
+                header('Location: ./paises.php?status=' . ($result && !isset($result['error']) ? 'success' : 'error'));
                 break;
             case 'delete':
-                $ok = $controller->deletarPais($data['id']);
-                header('Location: ./paises.php?status=' . ($ok ? 'deleted' : 'error'));
+                $result = $controller->deletarPais($data['id']);
+                header('Location: ./paises.php?status=' . ($result && !isset($result['error']) ? 'deleted' : 'error'));
                 break;
             default:
                 header('Location: ./paises.php?status=error');

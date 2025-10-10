@@ -19,7 +19,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="edit_pais" class="form-label">País</label>
-                        <select name="pais" id="edit_pais" class="form-select">
+                        <select name="id_pais" id="edit_pais" class="form-select">
                             <?php 
                                 require_once __DIR__ . '/../src/services/PaisService.php';
                                 $paisService = new PaisService();

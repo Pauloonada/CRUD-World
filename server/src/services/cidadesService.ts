@@ -4,7 +4,7 @@ export async function getCidades(){
     const result = await pool.query(
         `SELECT cidades.id, nome, cidades.populacao, id_pais, nome_oficial as nome_pais FROM cidades
         JOIN paises ON cidades.id_pais = paises.id
-        ORDER BY cidades.id`
+        ORDER BY cidades.id;`
     );
     return result.rows;
 }
