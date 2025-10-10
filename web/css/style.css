@@ -13,6 +13,6 @@ a{
 
 footer{
     display: flex;
-    min-width: 90vw;
+    min-width: 70vw;
     flex-direction: column;
 }

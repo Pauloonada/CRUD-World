@@ -20,20 +20,21 @@
 
         switch($action){
             case 'add':
-                $controller->criarPais($data);
+                $ok = $controller->criarPais($data);
+                header('Location: ./paises.php?status=' . ($ok ? 'success' : 'error'));
                 break;
             case 'edit':
-                $controller->editarPais($data['id'], $data);
+                $ok = $controller->editarPais($data['id'], $data);
+                header('Location: ./paises.php?status=' . ($ok ? 'success' : 'error'));
                 break;
             case 'delete':
-                $controller->deletarPais($data['id']);
+                $ok = $controller->deletarPais($data['id']);
+                header('Location: ./paises.php?status=' . ($ok ? 'deleted' : 'error'));
                 break;
             default:
-                die('Ação inválida');
+                header('Location: ./paises.php?status=error');
+                break;
         }
-                
-
-        header('Location: ./paises.php');
         exit;
     }
 
