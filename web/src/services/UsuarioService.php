@@ -12,7 +12,7 @@
 
         // POST /login
         public function login($email, $senha){
-            $ch = curl_init($this->apiUrl.'/login/');
+            $ch = curl_init($this->apiUrl.'/login');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_POST, true);
 
