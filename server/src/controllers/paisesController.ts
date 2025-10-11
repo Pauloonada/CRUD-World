@@ -5,7 +5,9 @@ export async function getAll(req: Request, res: Response){
     try{
         const limit = Number(req.query.limit) || 20;
         const offset = Number(req.query.offset) || 0;
-        const paises = await paisesService.getAllPaises(limit, offset);
+        const search = req.query.search as string | undefined;
+
+        const paises = await paisesService.getAllPaises(limit, offset, search);
         res.json(paises);
     }catch(error){
         res.status(500).json({ error: 'Error retrieving countries'});

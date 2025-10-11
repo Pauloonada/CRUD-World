@@ -5,7 +5,9 @@ export async function getAll(req: Request, res: Response){
     try{
         const limit = Number(req.query.limit) || 20;
         const offset = Number(req.query.offset) || 0;
-        const cidades = await cidadesService.getCidades(limit, offset);
+        const search = req.query.search as string | undefined;
+
+        const cidades = await cidadesService.getCidades(limit, offset, search);
         res.json(cidades);
     }catch(error){
         res.status(500).json({ error: 'Error retrieving cities' });

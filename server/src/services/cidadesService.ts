@@ -1,12 +1,18 @@
 import pool from '../utils/db.js';
 
-export async function getCidades(limit: number = 20, offset: number = 0){
-    const result = await pool.query(
-        `SELECT cidades.id, nome, cidades.populacao, id_pais, nome_oficial as nome_pais FROM cidades
-        JOIN paises ON cidades.id_pais = paises.id
-        ORDER BY cidades.id
-        LIMIT $1 OFFSET $2;`, [limit, offset]
-    );
+export async function getCidades(limit: number = 20, offset: number = 0, search?: string){
+    let query = "SELECT cidades.id, nome, cidades.populacao, id_pais, nome_oficial as nome_pais FROM cidades JOIN paises ON cidades.id_pais = paises.id";
+    const values: any[] = [];
+
+    if(search){
+        query += "WHERE nome ILIKE $1 OR nome_oficial ILIKE $1";
+        values.push(`%${search}%`);
+    }
+
+    query += `ORDER BY id LIMIT $${values.length + 1} OFFSET $${values.length + 2}`;
+    values.push(limit, offset);
+
+    const result = await pool.query(query, values);
     return result.rows;
 }
 

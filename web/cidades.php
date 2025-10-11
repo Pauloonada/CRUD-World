@@ -8,6 +8,8 @@
 
     require_once __DIR__ . '/src/controllers/CidadeController.php';
     $controller = new CidadeController();
+
+    $search = $_GET['search'] ?? null;
     $cidades = $controller->listarCidades($limit, $offset);
     $totalCidades = $controller->totalCidades();
     $totalPaginas = ceil($totalCidades / $limit);
@@ -24,29 +26,42 @@
     include __DIR__ . '/modals/editCidadeModal.php';
     include __DIR__ . '/modals/deleteCidadeModal.php';
 ?>
-
-<h2 class="mb-4">Lista de Cidades</h2>
+<div class="row text-center">
+    <h2 class="mb-4">Lista de Cidades</h2>
+</div>
 
 <button type="button" class="btn btn-success mb-3 btn-add" data-bs-toggle="modal" data-bs-target="#modalAdicionarCidade">+ Adicionar Cidade</button>
+
+<div class="col-md-6 mb-3">
+    <form method="GET" class="d-flex" role="search">
+        <input class="form-control me-2" type="search" name="search" placeholder="Pesquisar cidade..." aria-label="Search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
+        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+    </form>
+</div>
 
 <table class="table table-striped table-hover table-dark table-bordered align-middle">
     <thead class="table-dark text-center">
         <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>População</th>
-            <th>País</th>
-            <th>Ações</th>
+            <th>
+                <h3>Nome</h3>
+            </th>
+            <th>
+                <h3>População</h3>
+            </th>
+            <th>
+                <h3>País</h3>
+            </th>
+            <th>
+                <h3>Ações</h3>
+            </th>
         </tr>
     </thead>
     <tbody>
         <?php foreach($cidades as $cidade): ?>
             <tr>
-                <td><?php echo $cidade['id']; ?></td>
-                <td><?php echo $cidade['nome']; ?></td>
-                <td><?php echo $cidade['populacao']; ?></td>
-                <td><?php echo $cidade['nome_pais'] ?>
-                </td>
+                <td class="text-center"><?php echo $cidade['nome']; ?></td>
+                <td class="text-center"><?php echo $cidade['populacao']; ?></td>
+                <td class="text-center"><?php echo $cidade['nome_pais'] ?></td>
                 <td class="text-center">
                     <button type="button"
                         class="btn btn-warning btn-sm btn-edit"

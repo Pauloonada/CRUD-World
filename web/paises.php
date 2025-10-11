@@ -8,10 +8,12 @@
 
     require_once __DIR__ . '/src/controllers/PaisController.php';
     $controller = new PaisController();
-    $paises = $controller->listarPaises($limit, $offset);
+
+    $search = $_GET['search'] ?? null;
+    $paises = $controller->listarPaises($limit, $offset, $search);
     $totalPaises = $controller->totalPaises();
     $totalPaginas = ceil($totalPaises / $limit);
-    if(isset($_GET['page']) && $_GET['page'] > $totalPaginas && $totalPaginas > 0){
+    if (isset($_GET['page']) && $_GET['page'] > $totalPaginas && $totalPaginas > 0) {
         header('Location: ./paises.php?page=' . $totalPaginas);
         exit;
     }
@@ -24,30 +26,46 @@
     include __DIR__ . '/modals/editPaisModal.php';
     include __DIR__ . '/modals/deletePaisModal.php';
 ?>
-
-<h2 class="mb-4">Lista de Países</h2>
+<div class="row text-center">
+    <h2 class="mb-4 align-center">Lista de Países</h2>
+</div>
 
 <button type="button" class="btn btn-success mb-3 btn-add" data-bs-toggle="modal" data-bs-target="#modalAdicionarPais">+ Adicionar País</button>
+
+<div class="col-md-6 mb-3">
+    <form method="GET" class="d-flex" role="search">
+        <input class="form-control me-2" type="search" name="search" placeholder="Pesquisar país..." aria-label="Search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
+        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+    </form>
+</div>
 
 <table class="table table-striped table-hover table-dark table-bordered align-middle">
     <thead class="table-dark text-center">
         <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Continente</th>
-            <th>População</th>
-            <th>Idioma Principal</th>
-            <th>Ações</th>
+            <th>
+                <h3>País</h3>
+            </th>
+            <th>
+                <h3>Continente</h3>
+            </th>
+            <th>
+                <h3>População</h3>
+            </th>
+            <th>
+                <h3>Idioma Principal</h3>
+            </th>
+            <th>
+                <h3>Ações</h3>
+            </th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach($paises as $pais): ?>
+        <?php foreach ($paises as $pais): ?>
             <tr>
-                <td><?= $pais['id']; ?></td>
-                <td><?= $pais['nome_oficial']; ?></td>
-                <td><?= $pais['continente']; ?></td>
-                <td><?= $pais['populacao']; ?></td>
-                <td><?= $pais['idioma_principal']; ?></td>
+                <td class="text-center"><?= $pais['nome_oficial']; ?></td>
+                <td class="text-center"><?= $pais['continente']; ?></td>
+                <td class="text-center"><?= $pais['populacao']; ?></td>
+                <td class="text-center"><?= $pais['idioma_principal']; ?></td>
                 <td class="text-center">
                     <button type="button"
                         class="btn btn-warning btn-sm btn-edit"
@@ -57,8 +75,7 @@
                         data-populacao="<?= $pais['populacao'] ?>"
                         data-idioma="<?= $pais['idioma_principal'] ?>"
                         data-bs-toggle="modal"
-                        data-bs-target="#modalEditarPais"
-                    >
+                        data-bs-target="#modalEditarPais">
                         Editar
                     </button>
                     <button type="button" class="btn btn-danger btn-sm btn-delete" data-id="<?= $pais['id'] ?>">Excluir</button>
@@ -72,7 +89,7 @@
                 <nav aria-label="Pagination">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
-                            <a href="?page=<?= $page - 1; ?>" class="page-link <?php if ($page <= 1) echo "disabled" ?>">Anterior</a>
+                            <a href="?page=<?= $page - 1; ?>" class="page-link <?php if($page <= 1) echo "disabled" ?>">Anterior</a>
                         </li>
                         <li class="page-item active">
                             <span class="page-link"><?= $page ?></span>

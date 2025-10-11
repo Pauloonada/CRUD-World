@@ -8,8 +8,8 @@
             $this->service = new PaisService();
         }
 
-        public function listarPaises($limit = 20, $offset = 0){
-            return $this->service->getPaises($limit, $offset);
+        public function listarPaises($limit = 20, $offset = 0, $search = null){
+            return $this->service->getPaises($limit, $offset, $search);
         }
 
         public function totalPaises(){

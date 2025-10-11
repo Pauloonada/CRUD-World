@@ -1,7 +1,18 @@
 import pool from "../utils/db.js";
 
-export async function getAllPaises(limit: number = 20, offset: number = 0){
-    const result = await pool.query('SELECT * FROM paises ORDER BY id LIMIT $1 OFFSET $2', [limit, offset]);
+export async function getAllPaises(limit: number = 20, offset: number = 0, search?: string){
+    let query = "SELECT * FROM paises";
+    const values: any[] = [];
+
+    if(search){
+        query += " WHERE nome_oficial ILIKE $1 OR continente ILIKE $1 OR idioma_principal ILIKE $1";
+        values.push(`%${search}%`);
+    }
+
+    query += `ORDER BY id LIMIT $${values.length + 1} OFFSET $${values.length + 2}`;
+    values.push(limit, offset);
+
+    const result = await pool.query(query, values);
     return result.rows;
 }
 
