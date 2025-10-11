@@ -12,6 +12,10 @@
             return $this->service->getCidades($limit, $offset);
         }
 
+        public function totalCidades(){
+            return $this->service->getTotalCidades();
+        }
+
         public function acharCidade($id){
             return $this->service->getCidade($id);
         }

@@ -10,6 +10,11 @@ export async function getCidades(limit: number = 20, offset: number = 0){
     return result.rows;
 }
 
+export async function getTotalCidades(){
+    const result = await pool.query('SELECT COUNT(*) FROM cidades;');
+    return Number(result.rows[0].count);
+}
+
 export async function getCidadeById(id: number){
     const result = await pool.query(
         `SELECT cidades.id, nome, cidades.populacao, id_pais, nome_oficial as nome_pais FROM cidades

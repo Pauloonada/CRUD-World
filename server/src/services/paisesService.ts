@@ -5,6 +5,11 @@ export async function getAllPaises(limit: number = 20, offset: number = 0){
     return result.rows;
 }
 
+export async function getTotalPaises(){
+    const result = await pool.query('SELECT COUNT(*) FROM paises;');
+    return Number(result.rows[0].count);
+}
+
 export async function getPaisById(id: number){
     const result = await pool.query('SELECT * FROM paises WHERE id = $1', [id]);
     return result.rows[0];

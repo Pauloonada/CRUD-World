@@ -19,6 +19,16 @@
             return json_decode($res, true);
         }
 
+        // GET /cidades/total
+        public function getTotalCidades(){
+            $ch = curl_init($this->apiUrl."/cidades/total");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $res = curl_exec($ch);
+            curl_close($ch);
+            $data = json_decode($res, true);
+            return $data['total'] ?? 0;
+        }
+
         // GET /cidades/{id}
         public function getCidade($id){
             $ch = curl_init($this->apiUrl.'/cidades/'.$id);

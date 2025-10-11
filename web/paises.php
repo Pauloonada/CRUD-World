@@ -2,17 +2,23 @@
     $title = "Países";
     include __DIR__ . '/views/header.php';
 
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $limit = 20;
+    $offset = ($page - 1) * $limit;
+
     require_once __DIR__ . '/src/controllers/PaisController.php';
     $controller = new PaisController();
-    $paises = $controller->listarPaises();
+    $paises = $controller->listarPaises($limit, $offset);
+    $totalPaises = $controller->totalPaises();
+    $totalPaginas = ceil($totalPaises / $limit);
+
+    $nextOffset = $offset + $limit;
+    $paisesProximaPagina = $controller->listarPaises($limit, $nextOffset);
+    $temProximaPagina = count($paisesProximaPagina) > 0;
 
     include __DIR__ . '/modals/addPaisModal.php';
     include __DIR__ . '/modals/editPaisModal.php';
     include __DIR__ . '/modals/deletePaisModal.php';
-
-    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    $limit = 20;
-    $offset = ($page - 1) * $limit;
 ?>
 
 <h2 class="mb-4">Lista de Países</h2>
@@ -61,20 +67,21 @@
             <td colspan="6" class="text-center">
                 <nav aria-label="Pagination">
                     <ul class="pagination justify-content-center">
-                        <?php if($page > 1): ?>
-                            <li class="page-item">
-                                <a href="?page=<?= $page - 1; ?>" class="page-link">Anterior</a>
-                            </li>
-                        <?php endif; ?>
+                        <li class="page-item">
+                            <a href="?page=<?= $page - 1; ?>" class="page-link <?php if ($page <= 1) echo "disabled" ?>">Anterior</a>
+                        </li>
                         <li class="page-item active">
                             <span class="page-link"><?= $page ?></span>
                         </li>
-                        <?php if(count($paises) == $limit): ?>
-                            <li class="page-item">
-                                <a href="?page=<?= $page + 1 ?>" class="page-link">Próxima</a>
-                            </li>
-                        <?php endif; ?>
+                        <li class="page-item">
+                            <a href="?page=<?= $page + 1 ?>" class="page-link <?php if(!$temProximaPagina) echo "disabled" ?>">Próxima</a>
+                        </li>
                     </ul>
+                    <form method="GET" class="d-inline-flex align-items-center" style="gap: 8px;">
+                        <label for="pageInput" class="form-label mb-0">Ir para página:</label>
+                        <input type="number" min="1" max="<?= $totalPaginas ?>" name="page" id="pageInput" class="form-control form-control-sm" style="width: 80px;" value="<?= $page ?>">
+                        <button type="submit" class="btn btn-primary btn-sm">Ir</button>
+                    </form>
                 </nav>
             </td>
         </tr>

@@ -19,6 +19,16 @@
             return json_decode($res, true);
         }
 
+        // GET /paises/total
+        public function getTotalPaises(){
+            $ch = curl_init($this->apiUrl."/paises/total");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $res = curl_exec($ch);
+            curl_close($ch);
+            $data = json_decode($res, true);
+            return $data['total'] ?? 0;
+        }
+
         // GET /paises/{id}
         public function getPais($id){
             $ch = curl_init($this->apiUrl.'/paises/'.$id);

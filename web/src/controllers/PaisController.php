@@ -12,6 +12,10 @@
             return $this->service->getPaises($limit, $offset);
         }
 
+        public function totalPaises(){
+            return $this->service->getTotalPaises();
+        }
+
         public function acharPais($id){
             return $this->service->getPais($id);
         }
