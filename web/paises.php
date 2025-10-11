@@ -11,6 +11,10 @@
     $paises = $controller->listarPaises($limit, $offset);
     $totalPaises = $controller->totalPaises();
     $totalPaginas = ceil($totalPaises / $limit);
+    if(isset($_GET['page']) && $_GET['page'] > $totalPaginas && $totalPaginas > 0){
+        header('Location: ./paises.php?page=' . $totalPaginas);
+        exit;
+    }
 
     $nextOffset = $offset + $limit;
     $paisesProximaPagina = $controller->listarPaises($limit, $nextOffset);

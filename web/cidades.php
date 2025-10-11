@@ -11,6 +11,10 @@
     $cidades = $controller->listarCidades($limit, $offset);
     $totalCidades = $controller->totalCidades();
     $totalPaginas = ceil($totalCidades / $limit);
+    if(isset($_GET['page']) && $_GET['page'] > $totalPaginas && $totalPaginas > 0){
+        header('Location: ./cidades.php?page=' . $totalPaginas);
+        exit;
+    }
 
     $nextOffset = $offset + $limit;
     $cidadesProximaPagina = $controller->listarCidades($limit, $nextOffset);

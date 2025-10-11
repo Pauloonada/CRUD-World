@@ -17,10 +17,6 @@ Hospedagem no **Railway**, tanto do **site (PHP + Front End)** quanto do **banco
   - Inserir, listar, editar e excluir cidades vinculadas a um país existente.
   - Dados: Nome, população e país (chave estrangeira).
 
-- **Validações no Front End (JavaScript)**  
-  - Campos obrigatórios.
-  - Confirmação de exclusão.
-
 - **APIs Externas**  
   - [REST Countries](https://restcountries.com/) → bandeira, capital, moeda etc.
   - [OpenWeatherMap](https://openweathermap.org/) → clima em tempo real das cidades cadastradas.
