@@ -8,8 +8,8 @@
             $this->service = new PaisService();
         }
 
-        public function listarPaises(){
-            return $this->service->getPaises();
+        public function listarPaises($limit = 20, $offset = 0){
+            return $this->service->getPaises($limit, $offset);
         }
 
         public function acharPais($id){

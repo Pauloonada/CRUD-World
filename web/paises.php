@@ -9,6 +9,10 @@
     include __DIR__ . '/modals/addPaisModal.php';
     include __DIR__ . '/modals/editPaisModal.php';
     include __DIR__ . '/modals/deletePaisModal.php';
+
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $limit = 20;
+    $offset = ($page - 1) * $limit;
 ?>
 
 <h2 class="mb-4">Lista de Países</h2>
@@ -52,6 +56,29 @@
             </tr>
         <?php endforeach; ?>
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6" class="text-center">
+                <nav aria-label="Pagination">
+                    <ul class="pagination justify-content-center">
+                        <?php if($page > 1): ?>
+                            <li class="page-item">
+                                <a href="?page=<?= $page - 1; ?>" class="page-link">Anterior</a>
+                            </li>
+                        <?php endif; ?>
+                        <li class="page-item active">
+                            <span class="page-link"><?= $page ?></span>
+                        </li>
+                        <?php if(count($paises) == $limit): ?>
+                            <li class="page-item">
+                                <a href="?page=<?= $page + 1 ?>" class="page-link">Próxima</a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+            </td>
+        </tr>
+    </tfoot>
 </table>
 
 <div class="toast-container position-fixed top-0 end-0 p-3" id="toast-container" style="z-index: 9999;"></div>

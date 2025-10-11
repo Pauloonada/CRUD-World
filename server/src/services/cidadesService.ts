@@ -1,10 +1,11 @@
 import pool from '../utils/db.js';
 
-export async function getCidades(){
+export async function getCidades(limit: number = 20, offset: number = 0){
     const result = await pool.query(
         `SELECT cidades.id, nome, cidades.populacao, id_pais, nome_oficial as nome_pais FROM cidades
         JOIN paises ON cidades.id_pais = paises.id
-        ORDER BY cidades.id;`
+        ORDER BY cidades.id
+        LIMIT $1 OFFSET $2;`, [limit, offset]
     );
     return result.rows;
 }

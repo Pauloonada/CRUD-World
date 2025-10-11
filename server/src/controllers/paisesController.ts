@@ -3,7 +3,9 @@ import * as paisesService from '../services/paisesService.js';
 
 export async function getAll(req: Request, res: Response){
     try{
-        const paises = await paisesService.getAllPaises();
+        const limit = Number(req.query.limit) || 20;
+        const offset = Number(req.query.offset) || 0;
+        const paises = await paisesService.getAllPaises(limit, offset);
         res.json(paises);
     }catch(error){
         res.status(500).json({ error: 'Error retrieving countries'});

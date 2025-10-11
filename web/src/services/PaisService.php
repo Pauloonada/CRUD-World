@@ -11,8 +11,8 @@
         }
 
         // GET /paises
-        public function getPaises(){
-            $ch = curl_init($this->apiUrl.'/paises');
+        public function getPaises($limit = 20, $offset = 0){
+            $ch = curl_init($this->apiUrl."/paises?limit=$limit&offset=$offset");
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $res = curl_exec($ch);
             curl_close($ch);

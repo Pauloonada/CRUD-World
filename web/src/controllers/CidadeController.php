@@ -8,8 +8,8 @@
             $this->service = new CidadeService();
         }
 
-        public function listarCidades(){
-            return $this->service->getCidades();
+        public function listarCidades($limit = 20, $offset = 0){
+            return $this->service->getCidades($limit, $offset);
         }
 
         public function acharCidade($id){

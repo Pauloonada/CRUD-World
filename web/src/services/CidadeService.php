@@ -11,8 +11,8 @@
         }
 
         // GET /cidades
-        public function getCidades(){
-            $ch = curl_init($this->apiUrl.'/cidades');
+        public function getCidades($limit = 20, $offset = 0){
+            $ch = curl_init($this->apiUrl."/cidades?limit=$limit&offset=$offset");
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $res = curl_exec($ch);
             curl_close($ch);
