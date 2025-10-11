@@ -26,10 +26,11 @@
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $email = $_POST['email'] ?? '';
         $senha = $_POST['senha'] ?? '';
-        $senha_hash = md5($senha);
         $controller = new UsuarioController();
 
-        if($controller->login($email, $senha_hash)){
+        $user = $controller->login($email, $senha);
+        if($user){
+            $_SESSION['user'] = $user;
             header('Location: ./index.php');
             exit;
         }
