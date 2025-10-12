@@ -6,7 +6,7 @@ export async function getCidades(limit: number = 20, offset: number = 0, search?
 
     if(search){
         values.push(`%${search}%`);
-        query += "WHERE nome ILIKE $1 OR nome_oficial ILIKE $1";
+        query += " WHERE nome ILIKE $1 OR nome_oficial ILIKE $1";
     }
 
     // Indicando o indice pra LIMIT e OFFSET

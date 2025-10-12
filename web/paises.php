@@ -11,7 +11,7 @@
 
     $search = $_GET['search'] ?? null;
     $paises = $controller->listarPaises($limit, $offset, $search);
-    $totalPaises = $controller->totalPaises();
+    $totalPaises = $controller->totalPaises($search);
     $totalPaginas = ceil($totalPaises / $limit);
     if (isset($_GET['page']) && $_GET['page'] > $totalPaginas && $totalPaginas > 0) {
         header('Location: ./paises.php?page=' . $totalPaginas);
@@ -19,7 +19,7 @@
     }
 
     $nextOffset = $offset + $limit;
-    $paisesProximaPagina = $controller->listarPaises($limit, $nextOffset);
+    $paisesProximaPagina = $controller->listarPaises($limit, $nextOffset, $search);
     $temProximaPagina = count($paisesProximaPagina) > 0;
 
     include __DIR__ . '/modals/addPaisModal.php';
@@ -60,10 +60,6 @@
         </tr>
     </thead>
     <tbody>
-        <?php 
-            var_dump($paises);
-            exit; 
-        ?>
         <?php foreach ($paises as $pais): ?>
             <tr>
                 <td class="text-center"><?= $pais['nome_oficial']; ?></td>
@@ -93,18 +89,19 @@
                 <nav aria-label="Pagination">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
-                            <a href="?page=<?= $page - 1; ?>" class="page-link <?php if($page <= 1) echo "disabled" ?>">Anterior</a>
+                            <a href="?page=<?= $page - 1; ?>&search=<?= $search; ?>" class="page-link <?php if($page <= 1) echo "disabled" ?>">Anterior</a>
                         </li>
                         <li class="page-item active">
                             <span class="page-link"><?= $page ?></span>
                         </li>
                         <li class="page-item">
-                            <a href="?page=<?= $page + 1 ?>" class="page-link <?php if(!$temProximaPagina) echo "disabled" ?>">Próxima</a>
+                            <a href="?page=<?= $page + 1 ?>&search=<?= $search; ?>" class="page-link <?php if(!$temProximaPagina) echo "disabled" ?>">Próxima</a>
                         </li>
                     </ul>
                     <form method="GET" class="d-inline-flex align-items-center" style="gap: 8px;">
                         <label for="pageInput" class="form-label mb-0">Ir para página:</label>
                         <input type="number" min="1" max="<?= $totalPaginas ?>" name="page" id="pageInput" class="form-control form-control-sm" style="width: 80px;" value="<?= $page ?>">
+                        <input type="hidden" name="search" value="<?= htmlspecialchars($search) ?>">
                         <button type="submit" class="btn btn-primary btn-sm">Ir</button>
                     </form>
                 </nav>
