@@ -13,7 +13,7 @@ export async function getCidades(limit: number = 20, offset: number = 0, search?
     const limitIndex = values.length + 1;
     const offsetIndex = values.length + 2;
 
-    query += `ORDER BY id LIMIT $${limitIndex} OFFSET $${offsetIndex}`;
+    query += ` ORDER BY id LIMIT $${limitIndex} OFFSET $${offsetIndex}`;
     values.push(limit, offset);
 
     const result = await pool.query(query, values);
