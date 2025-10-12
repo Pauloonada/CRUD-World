@@ -12,8 +12,8 @@
             return $this->service->getPaises($limit, $offset, $search);
         }
 
-        public function totalPaises(){
-            return $this->service->getTotalPaises();
+        public function totalPaises($search = null){
+            return $this->service->getTotalPaises($search);
         }
 
         public function acharPais($id){

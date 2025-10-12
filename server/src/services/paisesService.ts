@@ -20,8 +20,16 @@ export async function getAllPaises(limit: number = 20, offset: number = 0, searc
     return result.rows;
 }
 
-export async function getTotalPaises(){
-    const result = await pool.query('SELECT COUNT(*) FROM paises;');
+export async function getTotalPaises(search?: string){
+    let query = "SELECT COUNT(*) FROM paises";
+    const values: any[] = [];
+
+    if(search){
+        values.push(`%${search}%`);
+        query += " WHERE nome_oficial ILIKE $1 OR continente ILIKE $1 OR idioma_principal ILIKE $1";
+    }
+
+    const result = await pool.query(query, values);
     return Number(result.rows[0].count);
 }
 

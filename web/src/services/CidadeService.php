@@ -23,8 +23,11 @@
         }
 
         // GET /cidades/total
-        public function getTotalCidades(){
-            $ch = curl_init($this->apiUrl."/cidades/total");
+        public function getTotalCidades($search = null){
+            $url = $this->apiUrl."/cidades/total";
+            if($search) $url .= "?search=".urlencode($search);
+
+            $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $res = curl_exec($ch);
             curl_close($ch);

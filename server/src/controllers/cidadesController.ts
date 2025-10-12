@@ -16,7 +16,8 @@ export async function getAll(req: Request, res: Response){
 
 export async function getTotalCidades(req: Request, res: Response){
     try{
-        const total = await cidadesService.getTotalCidades();
+        const search = req.query.search as string | undefined;
+        const total = await cidadesService.getTotalCidades(search);
         res.json({ total });
     }catch(error){
         res.status(500).json({ error: 'Error getting the number of cities' })

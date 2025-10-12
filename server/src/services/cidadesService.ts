@@ -20,8 +20,15 @@ export async function getCidades(limit: number = 20, offset: number = 0, search?
     return result.rows;
 }
 
-export async function getTotalCidades(){
-    const result = await pool.query('SELECT COUNT(*) FROM cidades;');
+export async function getTotalCidades(search?: string){
+    let query = 'SELECT COUNT(*) FROM cidades';
+    let values: any[] = [];
+    if(search){
+        values.push(`%${search}%`);
+        query += ' WHERE nome ILIKE $1 OR nome_oficial ILIKE $1';
+    }
+
+    const result = await pool.query(query, values);
     return Number(result.rows[0].count);
 }
 

@@ -23,8 +23,11 @@
         }
 
         // GET /paises/total
-        public function getTotalPaises(){
-            $ch = curl_init($this->apiUrl."/paises/total");
+        public function getTotalPaises($search = null){
+            $url = $this->apiUrl."/paises/total";
+            if($search) $url .= "?search=".urlencode($search);
+
+            $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $res = curl_exec($ch);
             curl_close($ch);
