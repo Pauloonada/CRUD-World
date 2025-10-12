@@ -5,11 +5,15 @@ export async function getAllPaises(limit: number = 20, offset: number = 0, searc
     const values: any[] = [];
 
     if(search){
-        query += " WHERE nome_oficial ILIKE $1 OR continente ILIKE $1 OR idioma_principal ILIKE $1";
         values.push(`%${search}%`);
+        query += " WHERE nome_oficial ILIKE $1 OR continente ILIKE $1 OR idioma_principal ILIKE $1";
     }
 
-    query += `ORDER BY id LIMIT $${values.length + 1} OFFSET $${values.length + 2}`;
+    // Indicando o indice pra LIMIT e OFFSET
+    const limitIndex = values.length + 1;
+    const offsetIndex = values.length + 2;
+
+    query += `ORDER BY id LIMIT $${limitIndex} OFFSET $${offsetIndex}`;
     values.push(limit, offset);
 
     const result = await pool.query(query, values);

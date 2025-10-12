@@ -60,6 +60,10 @@
         </tr>
     </thead>
     <tbody>
+        <?php 
+            var_dump($paises);
+            exit; 
+        ?>
         <?php foreach ($paises as $pais): ?>
             <tr>
                 <td class="text-center"><?= $pais['nome_oficial']; ?></td>
