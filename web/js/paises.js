@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.btn-delete').forEach(btn => {
         btn.addEventListener('click', () => {
             const id = Number(btn.dataset.id);
+            const nome = btn.dataset.nome;
+            console.log(nome);
+
+            document.querySelector('#nomePais').textContent = nome;
             document.querySelector('#delete_id').value = id;
 
             const modalEl = document.getElementById('modalExcluirPais');

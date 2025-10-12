@@ -10,6 +10,7 @@ export async function getAll(req: Request, res: Response){
         const paises = await paisesService.getAllPaises(limit, offset, search);
         res.json(paises);
     }catch(error){
+        console.error(error);
         res.status(500).json({ error: 'Error retrieving countries'});
     }
 }
@@ -20,6 +21,7 @@ export async function getTotalPaises(req: Request, res: Response){
         const total = await paisesService.getTotalPaises(search);
         res.json({ total });
     }catch(error){
+        console.error(error);
         res.status(500).json({ error: 'Error getting the number of cities' })
     }
 }
@@ -30,6 +32,7 @@ export async function getById(req: Request, res: Response){
         if(!pais) return res.status(404).json({ error: 'Country not found' });
         res.json(pais);
     }catch(error){
+        console.error(error);
         res.status(500).json({ error: 'Error retrieving country' });
     }
 }
@@ -40,6 +43,7 @@ export async function create(req: Request, res: Response){
         const newPais = await paisesService.createPais(nome_oficial, continente, populacao, idioma_principal);
         res.status(201).json(newPais);
     }catch(error){
+        console.error(error);
         res.status(500).json({ error: 'Error creating country' });
     }
 }
@@ -54,6 +58,7 @@ export async function update(req: Request, res: Response){
 
         res.json(updatedPais);
     }catch(error){
+        console.error(error);
         res.status(500).json({ error: 'Error updating country' });
     }
 }
@@ -67,6 +72,7 @@ export async function remove(req: Request, res: Response){
 
         res.json({ message: 'Country deleted succesfully', pais: deletedPais });
     }catch(error){
+        console.error(error);
         res.status(500).json({ error: 'Error deleting country' });
     }
 }

@@ -13,7 +13,7 @@ export async function getAllPaises(limit: number = 20, offset: number = 0, searc
     const limitIndex = values.length + 1;
     const offsetIndex = values.length + 2;
 
-    query += ` ORDER BY id LIMIT $${limitIndex} OFFSET $${offsetIndex}`; // Maldita concatenação
+    query += ` ORDER BY continente, nome_oficial LIMIT $${limitIndex} OFFSET $${offsetIndex}`; // Maldita concatenação
     values.push(limit, offset);
 
     const result = await pool.query(query, values);

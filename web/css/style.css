@@ -16,3 +16,13 @@ footer{
     min-width: 70vw;
     flex-direction: column;
 }
+
+#modalExcluirPais .modal-content{
+    box-shadow: 0 0 25px 5px red;
+    animation: pulseBorder 1.2s infinite alternate;
+}
+
+@keyframes pulseBorder{
+    from{ box-shadow: 0 0 20px 5px red; }
+    to { box-shadow: 0 0 30px 10px darkred; }
+}

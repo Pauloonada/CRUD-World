@@ -13,14 +13,21 @@
                         <input type="text" name="nome" id="nome" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="pais" class="form-label">Continente</label>
+                        <label for="pais" class="form-label">País</label>
                         <select name="id_pais" id="id_pais" class="form-select" required>
                             <?php 
                                 require_once __DIR__ . '/../src/services/PaisService.php';
                                 $paisService = new PaisService();
-                                $paises = $paisService->getPaises();
-                                foreach($paises as $pais){
-                                    echo "<option value='{$pais['id']}'>" . $pais['nome_oficial'] . "</option>";
+                                $totalPaises = $paisService->getTotalPaises();
+                                if($totalPaises === 0){
+                                    echo "<option value=''>Nenhum país disponível</option>";
+                                }
+                                else{
+                                    echo "<option value='' disabled selected>Selecione um país</option>";
+                                    $paises = $paisService->getPaises($totalPaises); // Pega todos os países
+                                    foreach($paises as $pais){
+                                        echo "<option value='{$pais['id']}'>" . $pais['nome_oficial'] . "</option>";
+                                    }
                                 }
                             ?>
                         </select>

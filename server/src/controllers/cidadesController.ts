@@ -10,6 +10,7 @@ export async function getAll(req: Request, res: Response){
         const cidades = await cidadesService.getCidades(limit, offset, search);
         res.json(cidades);
     }catch(error){
+        console.error(error);
         res.status(500).json({ error: 'Error retrieving cities' });
     }
 }
@@ -20,6 +21,7 @@ export async function getTotalCidades(req: Request, res: Response){
         const total = await cidadesService.getTotalCidades(search);
         res.json({ total });
     }catch(error){
+        console.error(error);
         res.status(500).json({ error: 'Error getting the number of cities' })
     }
 }
@@ -31,6 +33,7 @@ export async function getById(req: Request, res: Response){
         if(!cidade) return res.status(404).json({ error: 'City not found' });
         res.json(cidade);
     }catch(error){
+        console.error(error);
         res.status(500).json({ error: 'Error retrieving city' });
     }
 }
@@ -41,6 +44,7 @@ export async function create(req: Request, res: Response){
         const newCidade = await cidadesService.createCidade(nome, populacao, id_pais);
         res.status(201).json(newCidade);
     }catch(error){
+        console.error(error);
         res.status(500).json({ error: 'Error creating city' });
     }
 }
@@ -53,6 +57,7 @@ export async function update(req: Request, res: Response){
         if(!updatedCidade) return res.status(404).json({ error: 'City not found' });
         res.json(updatedCidade);
     }catch(error){
+        console.error(error);
         res.status(500).json({ error: 'Error updating city' });
     }
 }
@@ -64,6 +69,7 @@ export async function remove(req: Request, res: Response){
         if(!deletedCidade) return res.status(404).json({ error: 'City not found' });
         res.json({ message: 'City deleted succesfully', cidade: deletedCidade });
     }catch(error){
+        console.error(error);
         res.status(500).json({ error: 'Error deleting city' })
     }
 }

@@ -13,7 +13,7 @@ export async function getCidades(limit: number = 20, offset: number = 0, search?
     const limitIndex = values.length + 1;
     const offsetIndex = values.length + 2;
 
-    query += ` ORDER BY id LIMIT $${limitIndex} OFFSET $${offsetIndex}`;
+    query += ` ORDER BY nome_pais, nome LIMIT $${limitIndex} OFFSET $${offsetIndex}`;
     values.push(limit, offset);
 
     const result = await pool.query(query, values);
@@ -25,7 +25,7 @@ export async function getTotalCidades(search?: string){
     let values: any[] = [];
     if(search){
         values.push(`%${search}%`);
-        query += ' WHERE nome ILIKE $1 OR nome_oficial ILIKE $1';
+        query += ' WHERE nome ILIKE $1 OR nome_pais ILIKE $1';
     }
 
     const result = await pool.query(query, values);

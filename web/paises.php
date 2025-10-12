@@ -1,4 +1,10 @@
 <?php
+    if(session_status() === PHP_SESSION_NONE) session_start();
+    if(!isset($_SESSION['user'])){
+        header('Location: ./login.php?status=error');
+        exit;
+    }
+
     $title = "Países";
     include __DIR__ . '/views/header.php';
 
@@ -78,7 +84,7 @@
                         data-bs-target="#modalEditarPais">
                         Editar
                     </button>
-                    <button type="button" class="btn btn-danger btn-sm btn-delete" data-id="<?= $pais['id'] ?>">Excluir</button>
+                    <button type="button" class="btn btn-danger btn-sm btn-delete" data-id="<?= $pais['id'] ?>" data-nome="<?= $pais['nome_oficial'] ?>">Excluir</button>
                 </td>
             </tr>
         <?php endforeach; ?>
