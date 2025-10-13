@@ -10,7 +10,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome da Cidade</label>
-                        <input type="text" name="nome" id="nome" class="form-control" required>
+                        <input type="text" name="nome" id="nome" class="form-control" required placeholder="Nome da cidade">
                     </div>
                     <div class="mb-3">
                         <label for="pais" class="form-label">País</label>

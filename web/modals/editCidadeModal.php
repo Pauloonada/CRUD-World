@@ -23,7 +23,8 @@
                             <?php 
                                 require_once __DIR__ . '/../src/services/PaisService.php';
                                 $paisService = new PaisService();
-                                $paises = $paisService->getPaises();
+                                $totalPaises = $paisService->getTotalPaises();
+                                $paises = $paisService->getPaises($totalPaises);
                                 foreach($paises as $pais){
                                     echo "<option value='{$pais['id']}' class='form-control'>" . $pais['nome_oficial'] . "</option>";
                                 }

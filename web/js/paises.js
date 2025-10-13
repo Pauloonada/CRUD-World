@@ -37,14 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Info país
-    document.querySelectorAll('#info').forEach(btn => {
+    document.querySelectorAll('.btn-info').forEach(btn => {
         btn.addEventListener('click', async() => {
             const codigo_iso = btn.dataset.codigo;
-            const api_url = btn.dataset.apiurl;
+            const api_url = btn.dataset.api;
 
             // Requesição para o backend
             try{
-                const response = await fetch(`${api_url}/restcountries/${codigo_iso}`);
+                const response = await fetch(`${api_url}/restcountries?codigo=${codigo_iso}`);
                 if(!response.ok) throw new Error('Erro ao buscar dados do país');
 
                 const data = await response.json();
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 bootstrap.Modal.getOrCreateInstance(modalEl).show();
             } catch(error){
                 console.error('Erro: ', error);
-                showToast('Erro ao buscar dados do país', 'danger');
+                showToast('Erro ao buscar dados do país:  ' + error, 'danger');
             }
         });
     });

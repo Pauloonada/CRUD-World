@@ -31,6 +31,7 @@
     include __DIR__ . '/modals/addPaisModal.php';
     include __DIR__ . '/modals/editPaisModal.php';
     include __DIR__ . '/modals/deletePaisModal.php';
+    include __DIR__ . '/modals/infoPaisModal.php';
 ?>
 <div class="row text-center">
     <h2 class="mb-4 align-center">Lista de Países</h2>
@@ -44,6 +45,8 @@
         <button class="btn btn-outline-success flex-wrap" type="submit"><i class="bi bi-search" style="width: 1.5rem; height: 1.5rem;"></i></button>
     </form>
 </div>
+
+<script src="./js/paises.js"></script>
 
 <table class="table table-striped table-hover table-dark table-bordered align-middle">
     <thead class="table-dark text-center">
@@ -79,7 +82,7 @@
                 <td class="text-center">
                     <div class="col-sm-12 d-flex justify-content-center flex-wrap">
                         <div class="col-sm-4 justify-content-center flex-wrap">
-                            <button type="button" class="btn btn-primary btn-sm" id="info" data-codigo="<?= $pais['codigo_iso'] ?>" data-apiurl="<?= getenv('API_URL') ?>" data-bs-toggle="modal" data-bs-target="#modalInfoPais">info <i class="bi bi-info-circle" style="font-size: 1rem;"></i></button>
+                            <button type="button" class="btn btn-primary btn-info btn-sm text-white" data-codigo="<?= $pais['codigo_iso'] ?>" data-api="<?= $GLOBALS['API_URL'] ?>" data-bs-toggle="modal" data-bs-target="#modalInfoPais">info <i class="bi bi-info-circle" style="font-size: 1rem;"></i></button>
                         </div>
                         <div class="col-sm-6 justify-content-center flex-wrap gap-2">
                             <button type="button"
