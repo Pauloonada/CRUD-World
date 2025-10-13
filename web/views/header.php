@@ -15,6 +15,7 @@
             <a href="index.php"><h1 class="h3">🌍 CRUD World</h1></a>
             <nav>
                 <a href="index.php" class="text-white me-3">Início</a>
+                <?php if(isset($_SESSION['user'])) echo "<a href='logoff.php' class='text-white me-3 btn btn-danger'>Desconectar</a>"; ?>
             </nav>
         </div>
     </header>

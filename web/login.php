@@ -29,9 +29,9 @@
         $controller = new UsuarioController();
 
         $user = $controller->login($email, $senha);
-        if($user){
+        if($user && !$user['error']){
             $_SESSION['user'] = $user;
-            header('Location: ./index.php');
+            header('Location: ./index.php?user='.$user);
             exit;
         }
         else{
