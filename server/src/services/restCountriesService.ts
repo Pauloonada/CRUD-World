@@ -2,9 +2,9 @@ import axios from "axios";
 
 const BASE_URL = "https://restcountries.com/v3.1";
 
-export async function getPaisInfoByName(name: string){
+export async function getPaisInfoByCode(code: string){
     try{
-        const response = await axios.get(`${BASE_URL}/name/${encodeURIComponent(name)}?fullText=true`);
+        const response = await axios.get(`${BASE_URL}/alpha/${encodeURIComponent(code)}`);
         const data = response.data[0];
 
         return {

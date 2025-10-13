@@ -1,13 +1,14 @@
 import express from 'express';
 import cors from 'cors';
+
 import dotenv from 'dotenv';
+dotenv.config();
+
 import paisesRoutes from './routes/paisesroutes.js';
 import cidadesRoutes from './routes/cidadesRoutes.js';
 import usuariosRoutes from './routes/usuariosRoutes.js';
 import weatherRoutes from './routes/weatherRoutes.js';
 import infoRoutes from './routes/paisInfoRoutes.js';
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;

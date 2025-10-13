@@ -23,7 +23,7 @@ export async function getWeather(city: string){
             icone: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
         };
     } catch(error){
-        console.error("Erro ao buscar dados meteorológicos:", error);
+        console.error("Erro ao buscar dados meteorológicos: ", error);
         return null;
     }
 }
