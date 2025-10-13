@@ -14,6 +14,10 @@
                         <input type="text" name="nome_oficial" id="edit_nome" class="form-control" required>
                     </div>
                     <div class="mb-3">
+                        <label for="codigo_iso" class="form-label">Código ISO (2 Dígitos)</label>
+                        <input type="text" onkeydown="return /[a-zA-Z]/i.test(event.key)" name="codigo_iso" id="edit_codigo" class="form-control" required placeholder="Exemplo: BR" maxlength="2">
+                    </div>
+                    <div class="mb-3">
                         <label for="edit_continente" class="form-label">Continente</label>
                         <select name="continente" id="edit_continente" class="form-select" required>
                             <option value="" disabled selected>--SELECIONE UMA OPÇÃO--</option>

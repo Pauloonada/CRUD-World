@@ -36,12 +36,12 @@
     <h2 class="mb-4 align-center">Lista de Países</h2>
 </div>
 
-<button type="button" class="btn btn-success mb-3 btn-add" data-bs-toggle="modal" data-bs-target="#modalAdicionarPais">+ Adicionar País</button>
+<button type="button" class="btn btn-success mb-3 btn-add align-items-center" data-bs-toggle="modal" data-bs-target="#modalAdicionarPais"><i class="bi bi-database-add" style="font-size: 2rem;"></i> Adicionar País</button>
 
 <div class="col-md-6 mb-3">
     <form method="GET" class="d-flex" role="search">
         <input class="form-control me-2" type="search" name="search" placeholder="Pesquisar país..." aria-label="Search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
-        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+        <button class="btn btn-outline-success flex-wrap" type="submit"><i class="bi bi-search" style="width: 1.5rem; height: 1.5rem;"></i></button>
     </form>
 </div>
 
@@ -50,6 +50,9 @@
         <tr>
             <th>
                 <h3>País</h3>
+            </th>
+            <th>
+                <h3>Código</h3>
             </th>
             <th>
                 <h3>Continente</h3>
@@ -69,22 +72,31 @@
         <?php foreach ($paises as $pais): ?>
             <tr>
                 <td class="text-center"><?= $pais['nome_oficial']; ?></td>
+                <td class="text-center"><?= $pais['codigo_iso']; ?></td>
                 <td class="text-center"><?= $pais['continente']; ?></td>
                 <td class="text-center"><?= $pais['populacao']; ?></td>
                 <td class="text-center"><?= $pais['idioma_principal']; ?></td>
                 <td class="text-center">
-                    <button type="button"
-                        class="btn btn-warning btn-sm btn-edit"
-                        data-id="<?= $pais['id'] ?>"
-                        data-nome="<?= $pais['nome_oficial'] ?>"
-                        data-continente="<?= $pais['continente'] ?>"
-                        data-populacao="<?= $pais['populacao'] ?>"
-                        data-idioma="<?= $pais['idioma_principal'] ?>"
-                        data-bs-toggle="modal"
-                        data-bs-target="#modalEditarPais">
-                        Editar
-                    </button>
-                    <button type="button" class="btn btn-danger btn-sm btn-delete" data-id="<?= $pais['id'] ?>" data-nome="<?= $pais['nome_oficial'] ?>">Excluir</button>
+                    <div class="col-sm-12 d-flex justify-content-center flex-wrap">
+                        <div class="col-sm-4 justify-content-center flex-wrap">
+                            <button type="button" class="btn btn-primary btn-sm" id="info" data-codigo="<?= $pais['codigo_iso'] ?>" data-apiurl="<?= getenv('API_URL') ?>" data-bs-toggle="modal" data-bs-target="#modalInfoPais">info <i class="bi bi-info-circle" style="font-size: 1rem;"></i></button>
+                        </div>
+                        <div class="col-sm-6 justify-content-center flex-wrap gap-2">
+                            <button type="button"
+                                class="btn btn-warning btn-sm btn-edit text-white"
+                                data-id="<?= $pais['id'] ?>"
+                                data-nome="<?= $pais['nome_oficial'] ?>"
+                                data-continente="<?= $pais['continente'] ?>"
+                                data-populacao="<?= $pais['populacao'] ?>"
+                                data-idioma="<?= $pais['idioma_principal'] ?>"
+                                data-codigo="<?= $pais['codigo_iso'] ?>"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalEditarPais">
+                                <i class="bi bi-pencil-square" style="font-size: 1rem; color: white"></i> Editar
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm btn-delete" data-id="<?= $pais['id'] ?>" data-nome="<?= $pais['nome_oficial'] ?>"><i class="bi bi-trash3" style="font-size: 1rem;"></i> Excluir</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -95,20 +107,20 @@
                 <nav aria-label="Pagination">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
-                            <a href="?page=<?= $page - 1; ?>&search=<?= $search; ?>" class="page-link <?php if($page <= 1) echo "disabled" ?>">Anterior</a>
+                            <a href="?page=<?= $page - 1; ?>&search=<?= $search; ?>" class="page-link <?php if($page <= 1) echo "disabled" ?>"><i class="bi bi-caret-left"></i> Anterior</a>
                         </li>
                         <li class="page-item active">
                             <span class="page-link"><?= $page ?></span>
                         </li>
                         <li class="page-item">
-                            <a href="?page=<?= $page + 1 ?>&search=<?= $search; ?>" class="page-link <?php if(!$temProximaPagina) echo "disabled" ?>">Próxima</a>
+                            <a href="?page=<?= $page + 1 ?>&search=<?= $search; ?>" class="page-link <?php if(!$temProximaPagina) echo "disabled" ?>">Próxima <i class="bi bi-caret-right"></i></a>
                         </li>
                     </ul>
                     <form method="GET" class="d-inline-flex align-items-center" style="gap: 8px;">
                         <label for="pageInput" class="form-label mb-0">Ir para página:</label>
                         <input type="number" min="1" max="<?= $totalPaginas ?>" name="page" id="pageInput" class="form-control form-control-sm" style="width: 80px;" value="<?= $page ?>">
                         <input type="hidden" name="search" value="<?= htmlspecialchars($search) ?>">
-                        <button type="submit" class="btn btn-primary btn-sm">Ir</button>
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-arrow-return-right" style="font-size: 1rem"></i></button>
                     </form>
                 </nav>
             </td>

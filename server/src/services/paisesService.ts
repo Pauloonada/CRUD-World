@@ -38,18 +38,18 @@ export async function getPaisById(id: number){
     return result.rows[0];
 }
 
-export async function createPais(nome_oficial: string, continente: string, populacao: number, idioma_principal: string){
+export async function createPais(nome_oficial: string, continente: string, populacao: number, idioma_principal: string, codigo_iso: string){
     const result = await pool.query(
-        'INSERT INTO paises (nome_oficial, continente, populacao, idioma_principal) VALUES ($1, $2, $3, $4) RETURNING *',
-        [nome_oficial, continente, populacao, idioma_principal]
+        'INSERT INTO paises (nome_oficial, continente, populacao, idioma_principal, codigo_iso) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+        [nome_oficial, continente, populacao, idioma_principal, codigo_iso]
     );
     return result.rows[0];
 }
 
-export async function updatePais(id: number, nome_oficial: string, continente: string, populacao: number, idioma_principal: string){
+export async function updatePais(id: number, nome_oficial: string, continente: string, populacao: number, idioma_principal: string, codigo_iso: string){
     const result = await pool.query(
-        'UPDATE paises SET nome_oficial = $1, continente = $2, populacao = $3, idioma_principal = $4 WHERE id = $5 RETURNING *',
-        [nome_oficial, continente, populacao, idioma_principal, id]
+        'UPDATE paises SET nome_oficial = $1, continente = $2, populacao = $3, idioma_principal = $4, codigo_iso = $5 WHERE id = $6 RETURNING *',
+        [nome_oficial, continente, populacao, idioma_principal, codigo_iso, id]
     );
     return result.rows[0];
 }

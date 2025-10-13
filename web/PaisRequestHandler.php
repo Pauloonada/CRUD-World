@@ -15,9 +15,11 @@
             'continente' => $data['continente'] ?? null,
             'populacao' => (int)$data['populacao'] ?? null,
             'idioma_principal' => $data['idioma_principal'] ?? null,
+            'codigo_iso' => strtoupper($data['codigo_iso']) ?? null,
             'id' => isset($data['id']) ? (int)$data['id'] : null,
         ];
-
+        var_dump($data);
+        
         switch($action){
             case 'add':
                 $result = $controller->criarPais($data);

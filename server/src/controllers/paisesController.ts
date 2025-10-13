@@ -22,7 +22,7 @@ export async function getTotalPaises(req: Request, res: Response){
         res.json({ total });
     }catch(error){
         console.error(error);
-        res.status(500).json({ error: 'Error getting the number of cities' })
+        res.status(500).json({ error: 'Error getting the number of cities' });
     }
 }
 
@@ -39,8 +39,8 @@ export async function getById(req: Request, res: Response){
 
 export async function create(req: Request, res: Response){
     try{
-        const { nome_oficial, continente, populacao, idioma_principal } = req.body;
-        const newPais = await paisesService.createPais(nome_oficial, continente, populacao, idioma_principal);
+        const { nome_oficial, continente, populacao, idioma_principal, codigo_iso } = req.body;
+        const newPais = await paisesService.createPais(nome_oficial, continente, populacao, idioma_principal, codigo_iso);
         res.status(201).json(newPais);
     }catch(error){
         console.error(error);
@@ -51,9 +51,9 @@ export async function create(req: Request, res: Response){
 export async function update(req: Request, res: Response){
     try{
         const id = Number(req.params.id);
-        const { nome_oficial, continente, populacao, idioma_principal } = req.body;
+        const { nome_oficial, continente, populacao, idioma_principal, codigo_iso } = req.body;
 
-        const updatedPais = await paisesService.updatePais(id, nome_oficial, continente, populacao, idioma_principal);
+        const updatedPais = await paisesService.updatePais(id, nome_oficial, continente, populacao, idioma_principal, codigo_iso);
         if(!updatedPais) return res.status(404).json({ error: 'Country not found' });
 
         res.json(updatedPais);

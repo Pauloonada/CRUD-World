@@ -46,6 +46,7 @@
 
         // POST /paises
         public function createPais($data){
+            $data.unlink('id');
             $ch = curl_init($this->apiUrl.'/paises');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_POST, true);
