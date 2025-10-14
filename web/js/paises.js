@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Requesição para o backend
             try{
-                const response = await fetch(`https://crudworld-api.up.railway.app/RestCountries.php?codigo=${codigo_iso}`);
+                const response = await fetch(`https://restcountries.com/v3.1/alpha/${encodeURIComponent(codigo_iso)}`);
                 if(!response.ok) throw new Error('Erro ao buscar dados do país');
 
                 const data = await response.json();

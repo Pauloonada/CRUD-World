@@ -33,10 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.btn-weather').forEach(btn => {
         btn.addEventListener('click', async() => {
             const nome = btn.dataset.nome;
+            const API_KEY = btn.dataset.key;
 
             // Requesição para o backend
             try{
-                const response = await fetch(`https://crudworld-api.up.railway.app/weather?cidade=${nome}`);
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${nome}&units=metric&lang=pt_br&appid=${API_KEY}`);
                 if(!response.ok) throw new Error('Erro ao buscar dados da cidade');
 
                 const data = await response.json();

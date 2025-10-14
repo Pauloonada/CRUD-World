@@ -82,7 +82,7 @@
                 <td class="text-center">
                     <div class="col-sm-12 d-flex justify-content-center flex-wrap">
                         <div class="col-sm-4 justify-content-center flex-wrap">
-                            <button type="button" class="btn btn-primary btn-info btn-sm text-white" data-codigo="<?= $pais['codigo_iso'] ?>" data-api="<?= $GLOBALS['API_URL'] ?>" data-bs-toggle="modal" data-bs-target="#modalInfoPais">info <i class="bi bi-info-circle" style="font-size: 1rem;"></i></button>
+                            <button type="button" class="btn btn-primary btn-info btn-sm text-white" data-codigo="<?= $pais['codigo_iso'] ?>" data-bs-toggle="modal" data-bs-target="#modalInfoPais">info <i class="bi bi-info-circle" style="font-size: 1rem;"></i></button>
                         </div>
                         <div class="col-sm-6 justify-content-center flex-wrap gap-2">
                             <button type="button"

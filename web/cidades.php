@@ -74,7 +74,7 @@
                 <td class="text-center">
                     <div class="col-sm-12 d-flex justify-content-center flex-wrap">
                         <div class="col-sm-4 justify-content-center flex-wrap">
-                            <button type="button" class="btn btn-primary btn-weather btn-sm text-white" data-nome="<?= $cidade['nome'] ?>" data-api="<?= $GLOBALS['API_URL'] ?>" data-bs-toggle="modal" data-bs-target="#modalWeatherCidade">info <i class="bi bi-info-circle" style="font-size: 1rem;"></i></button>
+                            <button type="button" class="btn btn-primary btn-weather btn-sm text-white" data-nome="<?= $cidade['nome'] ?>" data-key="<?= $GLOBALS['API_KEY'] ?>" data-bs-toggle="modal" data-bs-target="#modalWeatherCidade">info <i class="bi bi-info-circle" style="font-size: 1rem;"></i></button>
                         </div>
                         <div class="col-sm-6 justify-content-center flex-wrap">
                             <button type="button"
