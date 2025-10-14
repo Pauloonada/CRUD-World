@@ -40,11 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.btn-info').forEach(btn => {
         btn.addEventListener('click', async() => {
             const codigo_iso = btn.dataset.codigo;
-            const api_url = btn.dataset.api;
 
             // Requesição para o backend
             try{
-                const response = await fetch(`${api_url}/restcountries?codigo=${codigo_iso}`);
+                const response = await fetch(`https://crudworld-api.up.railway.app/RestCountries.php?codigo=${codigo_iso}`);
                 if(!response.ok) throw new Error('Erro ao buscar dados do país');
 
                 const data = await response.json();

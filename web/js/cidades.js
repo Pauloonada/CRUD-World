@@ -33,11 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.btn-weather').forEach(btn => {
         btn.addEventListener('click', async() => {
             const nome = btn.dataset.nome;
-            const api_url = btn.dataset.api;
 
             // Requesição para o backend
             try{
-                const response = await fetch(`${api_url}/weather?cidade=${nome}`);
+                const response = await fetch(`https://crudworld-api.up.railway.app/weather?cidade=${nome}`);
                 if(!response.ok) throw new Error('Erro ao buscar dados da cidade');
 
                 const data = await response.json();

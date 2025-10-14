@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__ . '/../config/config.php';
 
-    class WeatherService{
+    class RestCountriesService{
         private $apiUrl;
 
         public function __construct(){
@@ -9,9 +9,9 @@
             $this->apiUrl = getenv('API_URL') ?: $GLOBALS['API_URL'];
         }
 
-        // POST /weather?cidade=$cidade
-        public function getWeather($cidade){
-            $url = $this->apiUrl.'/weather?cidade=' . urlencode($cidade);
+        // POST /restcountries?codigo={codigo_iso}
+        public function getWeather($codigo_iso){
+            $url = $this->apiUrl.'/restcountries?codigo=' . urlencode($codigo_iso);
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
