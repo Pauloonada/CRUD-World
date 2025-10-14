@@ -32,6 +32,11 @@
     include __DIR__ . '/modals/editCidadeModal.php';
     include __DIR__ . '/modals/deleteCidadeModal.php';
     include __DIR__ . '/modals/weatherCidadeModal.php';
+
+    $env = parse_ini_file(__DIR__ . '/.env');
+    var_dump($env);
+
+    $API_KEY = getenv('OPENWEATHER_API_KEY') ?: $env['OPENWEATHER_API_KEY'];
 ?>
 <div class="row text-center">
     <h2 class="mb-4">Lista de Cidades</h2>
@@ -74,7 +79,7 @@
                 <td class="text-center">
                     <div class="col-sm-12 d-flex justify-content-center flex-wrap">
                         <div class="col-sm-4 justify-content-center flex-wrap">
-                            <button type="button" class="btn btn-primary btn-weather btn-sm text-white" data-nome="<?= $cidade['nome'] ?>" data-key="<?= $GLOBALS['API_KEY'] ?>" data-bs-toggle="modal" data-bs-target="#modalWeatherCidade">info <i class="bi bi-info-circle" style="font-size: 1rem;"></i></button>
+                            <button type="button" class="btn btn-primary btn-weather btn-sm text-white" data-nome="<?= $cidade['nome'] ?>" data-key="<?= $API_KEY ?>" data-bs-toggle="modal" data-bs-target="#modalWeatherCidade">info <i class="bi bi-info-circle" style="font-size: 1rem;"></i></button>
                         </div>
                         <div class="col-sm-6 justify-content-center flex-wrap">
                             <button type="button"

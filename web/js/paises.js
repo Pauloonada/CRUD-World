@@ -49,10 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
 
                 // Preenchendo o modal
-                document.querySelector('#info_nome').textContent = data.nome_oficial || 'N/A';
-                document.querySelector('#info_capital').textContent = data.capital || 'N/A';
-                document.querySelector('#info_moeda').textContent = data.moeda || 'N/A';
-                document.querySelector('#info_bandeira').src = data.bandeira || '';
+                document.querySelector('#info_nome').textContent = data[0]?.name?.official || 'N/A';
+                document.querySelector('#info_capital').textContent = data[0]?.capital ? data[0]?.capital[0] : 'N/A';
+                document.querySelector('#info_moeda').textContent = data[0]?.currencies ? Object.keys(data[0].currencies)[0] : "N/A";
+                document.querySelector('#info_bandeira').src = data[0]?.flags?.svg || data[0]?.flags?.png || "";
 
                 const modalEl = document.getElementById('modalInfoPais');
                 bootstrap.Modal.getOrCreateInstance(modalEl).show();
