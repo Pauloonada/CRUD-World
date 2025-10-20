@@ -34,7 +34,7 @@
     include __DIR__ . '/modals/infoPaisModal.php';
 ?>
 <div class="row text-center">
-    <h2 class="mb-4 align-center">Lista de Países</h2>
+    <a href="paises.php"><h2 class="mb-4 align-center">Lista de Países</h2></a>
 </div>
 
 <button type="button" class="btn btn-success mb-3 btn-add align-items-center" data-bs-toggle="modal" data-bs-target="#modalAdicionarPais"><i class="bi bi-database-add" style="font-size: 2rem;"></i> Adicionar País</button>

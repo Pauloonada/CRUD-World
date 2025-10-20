@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 bootstrap.Modal.getOrCreateInstance(modalEl).show();
             } catch(error){
                 console.error('Erro: ', error);
-                showToast('Erro ao buscar dados do país:  ' + error, 'danger');
+                showToast('Erro ao buscar dados do país', 'danger');
             }
         });
     });

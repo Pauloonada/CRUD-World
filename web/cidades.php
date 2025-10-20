@@ -34,12 +34,10 @@
     include __DIR__ . '/modals/weatherCidadeModal.php';
 
     $env = parse_ini_file(__DIR__ . '/.env');
-    var_dump($env);
-
     $API_KEY = getenv('OPENWEATHER_API_KEY') ?: $env['OPENWEATHER_API_KEY'];
 ?>
 <div class="row text-center">
-    <h2 class="mb-4">Lista de Cidades</h2>
+    <a href="cidades.php"><h2 class="mb-4">Lista de Cidades</h2></a>
 </div>
 
 <button type="button" class="btn btn-success mb-3 btn-add" data-bs-toggle="modal" data-bs-target="#modalAdicionarCidade"><i class="bi bi-database-add" style="font-size: 2rem;"></i> Adicionar Cidade</button>

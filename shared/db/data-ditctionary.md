@@ -13,6 +13,7 @@ Este documento descreve a estrutura do banco de dados utilizado no sistema **CRU
 | continente        | VARCHAR(45)     |     |     | NÃO  | Continente ao qual o país pertence     |
 | populacao         | INT4            |     |     | NÃO  | População estimada                     |
 | idioma_principal  | VARCHAR(45)     |     |     | NÃO  | Idioma principal falado no país        |
+| codigo_iso        | CHAR(2)         |     |     | NÃO  | Código utilizado pelas instituições    |
 
 ---
 
@@ -28,6 +29,6 @@ Este documento descreve a estrutura do banco de dados utilizado no sistema **CRU
 ---
 
 📌 **Observações**
-- Todas as tabelas usam **chaves primárias numéricas sequenciais** (`IDENTITY`).  
+- Todas as tabelas usam **chaves primárias numéricas sequenciais** (`IDENTITY`).
 - A tabela `cidades` possui relacionamento **N:1** com `paises`.  
 - Todos os campos são **NOT NULL**.  

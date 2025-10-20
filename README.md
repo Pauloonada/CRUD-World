@@ -3,7 +3,7 @@
 Aplicação web completa desenvolvida em **HTML, CSS, JavaScript, PHP e PostgreSQL**, com foco no gerenciamento de dados geográficos.  
 O sistema permite cadastrar, consultar, editar e excluir **países e cidades**, garantindo integridade dos dados e integração com APIs externas para enriquecer as informações.  
 
-Hospedagem no **Railway**, tanto do **site (PHP + Front End)** quanto do **banco de dados (PostgreSQL)**.
+Hospedagem no **Railway**, tanto do **site (PHP + Front End)** quanto do **banco de dados (PostgreSQL)** e **API intermediária (TypeScript)**.
 
 ---
 
@@ -11,7 +11,7 @@ Hospedagem no **Railway**, tanto do **site (PHP + Front End)** quanto do **banco
 
 - **CRUD de Países**
   - Inserir, listar, editar e excluir países.
-  - Dados: Nome oficial, continente, população e idioma.
+  - Dados: Nome oficial, continente, população, idioma e código ISO.
 
 - **CRUD de Cidades**
   - Inserir, listar, editar e excluir cidades vinculadas a um país existente.
@@ -25,12 +25,11 @@ Hospedagem no **Railway**, tanto do **site (PHP + Front End)** quanto do **banco
 
 ## 🛠️ Tecnologias Utilizadas  
 
-- **Front End**: HTML5, CSS3, JavaScript  
-- **Back End**: PHP  
-- **Banco de Dados**: PostgreSQL  
-- **Gerenciador de Banco**: DBeaver  
+- **Front End**: HTML5, PHP, CSS3, JavaScript
+- **Back End**: TypeScript e PHP
+- **Banco de Dados**: PostgreSQL
 - **APIs**: REST Countries, OpenWeatherMap  
-- **Hospedagem**: Railway  
+- **Hospedagem**: [Railway](crudworld.up.railway.app)
 
 ---
 
