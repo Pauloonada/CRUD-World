@@ -1,5 +1,6 @@
 import React, {createContext, useContext, useState, useEffect} from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import api from "../services/api";
 
 interface AuthContextData {
     user: string | null;
@@ -17,22 +18,40 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     useEffect(() => {
         const loadUser = async() => {
             const savedUser = await AsyncStorage.getItem("@user");
-            if(savedUser) setUser(savedUser);
+
+            if(savedUser){
+                const parsed = JSON.parse(savedUser);
+                setUser(parsed.email);
+            }
             setLoading(false);
         };
         loadUser();
     }, []);
 
-    async function login(email: string, password: string){
-        // Placeholder(Chamar a api futuramente)
-        if(email === "" || password === "") throw new Error("Campos vazios.");
+    async function login(email: string, senha: string){
+        if(!email || !senha) throw new Error("Preencha todos os campos!");
 
-        await AsyncStorage.setItem("@user", email);
-        setUser(email);
+        setLoading(true);
+        try{
+            const response = await api.post("/login", { email, senha }, {
+                headers: { "Content-Type": "application/json" },
+            });
+            const user = response.data;
+
+            // Salvando no storage
+            await AsyncStorage.setItem("@user", JSON.stringify(user));
+
+            setUser(user.email);
+        } catch(error: any){
+            console.error(error);
+            throw new Error("Credenciais inválidas ou erro de conexão.");
+        } finally{
+            setLoading(false);
+        }
     }
 
     async function logout(){
-        await AsyncStorage.removeItem("@user");
+        await AsyncStorage.multiRemove(["@user", "@token"]);
         setUser(null);
     }
 

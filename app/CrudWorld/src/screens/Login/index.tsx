@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, StyleSheet } from "react-native";
 import { useAuth } from "../../contexts/AuthContext";
 
-export default function Login(){
+export default function LoginScreen(){
     const { login } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
     async function handleLogin(){
@@ -23,7 +24,7 @@ export default function Login(){
         <View style={styles.container}>
             <Text style={styles.title}>Login</Text>
 
-            <TextInput placeholder="E-mail" style={styles.text_input} value={email} onChangeText={setEmail} />
+            <TextInput placeholder="E-mail" style={styles.text_input} value={email} onChangeText={setEmail} autoCapitalize="none" />
             <TextInput placeholder="Senha" style={styles.text_input} value={password} onChangeText={setPassword} secureTextEntry />
 
             <TouchableOpacity onPress={handleLogin} style={styles.button}>
