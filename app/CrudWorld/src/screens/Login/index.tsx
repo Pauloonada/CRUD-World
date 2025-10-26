@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { useAuth } from "../../contexts/AuthContext";
 
 export default function LoginScreen(){
     const { login } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
 
     async function handleLogin(){
@@ -25,7 +26,27 @@ export default function LoginScreen(){
             <Text style={styles.title}>Login</Text>
 
             <TextInput placeholder="E-mail" style={styles.text_input} value={email} onChangeText={setEmail} autoCapitalize="none" />
-            <TextInput placeholder="Senha" style={styles.text_input} value={password} onChangeText={setPassword} secureTextEntry />
+            <View style={styles.password_container}>
+                <TextInput
+                placeholder="Senha"
+                style={[styles.text_input, { flex: 1, borderWidth: 0 }]}
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry={!showPassword} // Alterna a visibilidade
+                autoCapitalize="none"
+                autoCorrect={false}
+                textContentType="password"
+                importantForAutofill="yes"
+                />
+
+                <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                    <Ionicons 
+                        name={showPassword ? "eye" : "eye-off"} // Alterna o ícone
+                        size={22}
+                        color="#555"
+                    />
+                </TouchableOpacity>
+            </View>
 
             <TouchableOpacity onPress={handleLogin} style={styles.button}>
                 {loading ? (
@@ -54,6 +75,15 @@ const styles = StyleSheet.create({
         width: "80%",
         borderRadius: 8,
         padding: 10,
+    },
+    password_container: {
+        flexDirection: "row",
+        alignItems: "center",
+        borderWidth: 1,
+        width: "80%",
+        borderRadius: 8,
+        paddingHorizontal: 10,
+        backgroundColor: "#fff",
     },
     button: {
         backgroundColor: "#007AFF",

@@ -10,7 +10,7 @@ function HomeScreen(){
     return(
         <View style={styles.container}>
             <Text>Bem vindo, {user}</Text>
-            <TouchableOpacity style={styles.button} onPress={logout} />
+            <TouchableOpacity style={styles.button} onPress={logout}><Text style={styles.button_text}>Sair</Text></TouchableOpacity>
         </View>
     );
 }
@@ -28,10 +28,18 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        margin: 20,
     },
     button:{
-        justifyContent: "center",
+        backgroundColor: "#d33",
+        padding: 8,
+        borderRadius: 10,
+        width: "20%",
         alignItems: "center",
-        borderRadius: 8,
+        margin: 15,
+    },
+    button_text:{
+        color: "#fff",
+        fontWeight: "bold",
     },
 });
