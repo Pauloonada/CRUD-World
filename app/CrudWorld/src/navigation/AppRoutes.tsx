@@ -1,45 +1,41 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { useAuth } from "../contexts/AuthContext";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 
-const Stack = createNativeStackNavigator();
+import CidadesScreen from "../screens/Cidades";
+import PaisesScreen from "../screens/Paises";
+import HomeScreen from "../screens/Home"
 
-function HomeScreen(){
-    const { logout, user } = useAuth();
-
-    return(
-        <View style={styles.container}>
-            <Text>Bem vindo, {user}</Text>
-            <TouchableOpacity style={styles.button} onPress={logout}><Text style={styles.button_text}>Sair</Text></TouchableOpacity>
-        </View>
-    );
-}
+const Tab = createBottomTabNavigator();
 
 export function AppRoutes(){
     return(
-        <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} />
-        </Stack.Navigator>
+        <Tab.Navigator
+            initialRouteName="Home"
+            screenOptions={({ route }) => ({
+                headerStyle: { backgroundColor: "#d33" },
+                headerTintColor: "#fff",
+                tabBarActiveTintColor: "#d33",
+                tabBarInactiveTintColor: "#888",
+                tabBarStyle: {
+                    backgroundColor: "#fff",
+                    borderTopColor: "#eee",
+                    height: 60,
+                    paddingBottom: 5,
+                },
+                tabBarIcon: ({ color, size }) => {
+                    let iconName: keyof typeof Ionicons.glyphMap;
+
+                    if(route.name === "Home") iconName = "home";
+                    else if(route.name === "Paises") iconName = "globe";
+                    else iconName = "business";
+
+                    return <Ionicons name={iconName} size={size} color={color} />
+                }
+            })}
+        >
+            <Tab.Screen name="Home" component={HomeScreen} />
+            <Tab.Screen name="Paises" component={PaisesScreen} />
+            <Tab.Screen name="Cidades" component={CidadesScreen} />
+        </Tab.Navigator>
     );
 }
-
-const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        margin: 20,
-    },
-    button:{
-        backgroundColor: "#d33",
-        padding: 8,
-        borderRadius: 10,
-        width: "20%",
-        alignItems: "center",
-        margin: 15,
-    },
-    button_text:{
-        color: "#fff",
-        fontWeight: "bold",
-    },
-});

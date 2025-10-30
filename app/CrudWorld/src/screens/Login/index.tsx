@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, StyleSheet } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, ActivityIndicator } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useAuth } from "../../contexts/AuthContext";
+import styles from "./styles";
 
 export default function LoginScreen(){
     const { login } = useAuth();
@@ -58,42 +59,3 @@ export default function LoginScreen(){
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 10,
-    },
-    title: {
-        fontSize: 26,
-        fontWeight: "bold",
-    },
-    text_input: {
-        borderWidth: 1,
-        width: "80%",
-        borderRadius: 8,
-        padding: 10,
-    },
-    password_container: {
-        flexDirection: "row",
-        alignItems: "center",
-        borderWidth: 1,
-        width: "80%",
-        borderRadius: 8,
-        paddingHorizontal: 10,
-        backgroundColor: "#fff",
-    },
-    button: {
-        backgroundColor: "#007AFF",
-        padding: 12,
-        borderRadius: 8,
-        width: "80%",
-        alignItems: "center",
-    },
-    button_text: {
-        color: "#fff",
-        fontWeight: "bold",
-    },
-});

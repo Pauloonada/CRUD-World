@@ -1,13 +1,7 @@
 import React, {createContext, useContext, useState, useEffect} from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../services/api";
-
-interface AuthContextData {
-    user: string | null;
-    loading: boolean;
-    login: (email: string, password: string) => Promise<void>;
-    logout: () => Promise<void>;
-}
+import { AuthContextData } from "../@types/AuthContextData";
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
