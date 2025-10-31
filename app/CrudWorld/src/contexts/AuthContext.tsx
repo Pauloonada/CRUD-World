@@ -3,6 +3,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../services/api";
 import { AuthContextData } from "../@types/AuthContextData";
 
+console.log("AsyncStorage test: ", AsyncStorage);
+
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children })=> {
@@ -15,7 +17,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
             if(savedUser){
                 const parsed = JSON.parse(savedUser);
-                setUser(parsed.email);
+                if(parsed && parsed.email){
+                    setUser(parsed.email);
+                }
             }
             setLoading(false);
         };
@@ -30,6 +34,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             const response = await api.post("/login", { email, senha }, {
                 headers: { "Content-Type": "application/json" },
             });
+            console.log("Login response: ", response?.data);
             const user = response.data;
 
             // Salvando no storage
