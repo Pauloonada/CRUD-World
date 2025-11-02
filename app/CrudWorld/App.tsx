@@ -4,7 +4,7 @@ import { AuthProvider, useAuth } from './src/contexts/AuthContext';
 import { AppRoutes } from './src/navigation/AppRoutes';
 import { AuthRoutes } from './src/navigation/AuthRoutes';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
-import 'react-native-reanimated';
+import "react-native-reanimated"
 
 function Routes(){
   const { user, loading } = useAuth();
@@ -20,7 +20,7 @@ function Routes(){
   return user ? <AppRoutes /> : <AuthRoutes /> // Retorna tela de login caso necessário
 }
 
-export default function App() {
+export default function App(){
   return (
     <AuthProvider>
       <NavigationContainer>
