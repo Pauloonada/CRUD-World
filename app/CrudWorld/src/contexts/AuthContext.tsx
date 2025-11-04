@@ -40,7 +40,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             // Salvando no storage
             await AsyncStorage.setItem("@user", JSON.stringify(user));
 
-            setUser(user.email);
+            setUser(user.apelido);
         } catch(error: any){
             console.error(error);
             throw new Error("Credenciais inválidas ou erro de conexão.");

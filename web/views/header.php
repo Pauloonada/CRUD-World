@@ -1,3 +1,5 @@
+<?php include __DIR__ . '../../modals/sairModal.php'; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br" data-bs-theme="dark">
 <head>
@@ -16,7 +18,7 @@
             <a href="index.php"><h1 class="h3">🌍 CRUD World</h1></a>
             <nav>
                 <a href="index.php" class="text-white me-3">Início</a>
-                <?php if(isset($_SESSION['user'])) echo "<a href='logoff.php' class='text-white me-3 btn btn-danger'>Desconectar</a>"; ?>
+                <?php if(isset($_SESSION['user'])) echo "<button type='button' class='btn btn-outline-danger btn-sm btn-sair' data-bs-toggle='modal' data-bs-target='#modalSair'><i class='bi bi-power' style='font-size: 1rem;'></i> Desconectar</button>"?>
             </nav>
         </div>
     </header>
