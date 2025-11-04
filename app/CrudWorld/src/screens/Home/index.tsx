@@ -13,6 +13,8 @@ export default function HomeScreen(){
             <TouchableOpacity style={styles.button} onPress={logout}>
                 <Text style={styles.button_text}>Sair</Text>
             </TouchableOpacity>
+
+            {/* Adicionar toggle entre modo escuro e claro */}
         </View>
     );
 }

@@ -1,7 +1,7 @@
 import React, {createContext, useContext, useState, useEffect} from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../services/api";
-import { AuthContextData } from "../@types/AuthContextData";
+import AuthContextData from "../@types/AuthContextData";
 
 console.log("AsyncStorage test: ", AsyncStorage);
 
