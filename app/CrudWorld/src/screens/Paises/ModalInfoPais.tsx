@@ -35,22 +35,22 @@ export default function ModalInfoPais({
                         />
                     )}
                 </View>
-                <Text style={styles.modalTitle}>
+                <Text style={[styles.modalTitle, { color: theme.text}]}>
                     {paisInfo?.name?.common || "Informações do país"}
                 </Text>
 
                 <ScrollView style={{ maxHeight: 300 }}>
                     {paisInfo ? (
                         <>
-                            <Text>Capital: {paisInfo.capital?.[0] || "N/A"}</Text>
-                            <Text>Região: {paisInfo.region || "N/A"}</Text>
-                            <Text>Sub-região: {paisInfo.subregion || "N/A"}</Text>
-                            <Text>População: {paisInfo.population?.toLocaleString() || "N/A"}</Text>
-                            <Text>
+                            <Text style={{ color: theme.text}}>Capital: {paisInfo.capital?.[0] || "N/A"}</Text>
+                            <Text style={{ color: theme.text}}>Região: {paisInfo.region || "N/A"}</Text>
+                            <Text style={{ color: theme.text}}>Sub-região: {paisInfo.subregion || "N/A"}</Text>
+                            <Text style={{ color: theme.text}}>População: {paisInfo.population?.toLocaleString() || "N/A"}</Text>
+                            <Text style={{ color: theme.text}}>
                                 Moeda:{" "}
                                 {paisInfo.currencies ? Object.keys(paisInfo.currencies).join(", ") : "N/A"}
                             </Text>
-                            <Text>
+                            <Text style={{ color: theme.text}}>
                                 Idiomas: {" "}
                                 {paisInfo.languages ? Object.keys(paisInfo.languages).join(", ") : "N/A"}
                             </Text>

@@ -5,6 +5,7 @@ import Pais from "../../@types/Pais";
 import { getAllPaises, createPais, updatePais, deletePais } from "../../services/paisesService";
 import ModalAdicionarPais from "./ModalAdicionarPais";
 import ModalEditarPais from "./ModalEditarPais";
+import ModalExcluirPais from "./ModalExcluirPais";
 import ModalInfoPais from "./ModalInfoPais";
 import { useTheme } from "../../contexts/ThemeContext";
 
@@ -19,6 +20,7 @@ export default function PaisesScreen(){
     const [infoPais, setInfopais] = useState<any>(null);
     const [modalAdicionarVisible, setModalAdicionarVisible] = useState(false);
     const [modalEditarVisible, setModalEditarVisible] = useState(false);
+    const [modalDeletarVisible, setModalDeletarVisible] = useState(false);
     const [modalInfoVisible, setModalInfoVisible] = useState(false);
     const [novoPais, setNovoPais] = useState<Pais>({
         nome_oficial: "",
@@ -35,6 +37,7 @@ export default function PaisesScreen(){
         idioma_principal: "",
         codigo_iso: "",
     });
+    const [paisDeletado, setPaisDeletado] = useState<Pais | null>(null);
 
     async function loadMorePaises(){
         if(loadingMore) return;
@@ -110,17 +113,16 @@ export default function PaisesScreen(){
     }
 
     async function handleExcluirPais(id: number){
-        Alert.alert("Excluir", "Deseja mesmo excluir esse país?", [
-            { text: "Cancelar", style: "cancel" },
-            {
-                text: "Excluir",
-                style: "destructive",
-                onPress: async() => {
-                    await deletePais(id);
-                    setPaises((prev) => prev.filter((p) => p.id !== id));
-                },
-            },
-        ]);
+        if(!paisDeletado) return;
+        try{
+            await deletePais(paisDeletado.id!);
+            setPaises((prev) => prev.filter((p) => p.id !== paisDeletado.id));
+            setModalDeletarVisible(false);
+            setPaisDeletado(null);
+        }catch(error){
+            Alert.alert("Erro", "Falha ao excluir o país");
+            console.error(error);
+        }
     }
 
     async function handleGetInfoPais(codigo: string){
@@ -139,6 +141,11 @@ export default function PaisesScreen(){
     function openModalEdit(pais: Pais){
         setPaisEditado(pais);
         setModalEditarVisible(true);
+    }
+
+    function openModalDelete(pais: Pais){
+        setPaisDeletado(pais);
+        setModalDeletarVisible(true);
     }
 
     useEffect(() => {
@@ -185,7 +192,7 @@ export default function PaisesScreen(){
                                     <Text style={[styles.actionEdit, { color: theme.primary }]}>Editar</Text>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity onPress={() => handleExcluirPais(item.id!)}>
+                                <TouchableOpacity onPress={() => openModalDelete(item)}>
                                     <Text style={[styles.actionDelete, { color: theme.error }]}>Delete</Text>
                                 </TouchableOpacity>
                             </TouchableOpacity>
@@ -204,6 +211,12 @@ export default function PaisesScreen(){
                         paisEditado={paisEditado}
                         setPaisEditado={setPaisEditado}
                         handleEditarPais={handleEditarPais}
+                    />
+                    <ModalExcluirPais
+                        modalVisible={modalDeletarVisible}
+                        setModalVisible={setModalDeletarVisible}
+                        paisExcluido={paisDeletado}
+                        handleExcluirPais={handleExcluirPais}
                     />
                     <ModalInfoPais
                         modalVisible={modalInfoVisible}

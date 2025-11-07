@@ -16,7 +16,7 @@ export default StyleSheet.create({
     buttonsRow: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginBottom: 15,
+        marginVertical: 10,
     },
     button: {
         backgroundColor: "#4a90e2",
