@@ -82,4 +82,14 @@ export default StyleSheet.create({
         padding: 8,
         marginBottom: 10,
     },
+    searchInput: {
+        flex: 1,
+        height: 40,
+        borderWidth: 1,
+        borderColor: "#ccc",
+        borderRadius: 8,
+        paddingHorizontal: 10,
+        backgroundColor: "#fff",
+        marginRight: 8,
+    }
 });
