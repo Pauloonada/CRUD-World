@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { useTheme } from "../contexts/ThemeContext";
 
 import CidadesScreen from "../screens/Cidades";
 import PaisesScreen from "../screens/Paises";
@@ -8,16 +9,18 @@ import HomeScreen from "../screens/Home"
 const Tab = createBottomTabNavigator();
 
 export function AppRoutes(){
+    const { theme } = useTheme();
+
     return(
         <Tab.Navigator
             initialRouteName="Home"
             screenOptions={({ route }) => ({
-                headerStyle: { backgroundColor: "#d33" },
-                headerTintColor: "#fff",
-                tabBarActiveTintColor: "#d33",
-                tabBarInactiveTintColor: "#888",
+                headerStyle: { backgroundColor: theme.headerColor },
+                headerTintColor: theme.text,
+                tabBarActiveTintColor: theme.tabBarActiveColor,
+                tabBarInactiveTintColor: theme.tabIconInactive,
                 tabBarStyle: {
-                    backgroundColor: "#fff",
+                    backgroundColor: theme.tabBarBackground,
                     borderTopColor: "#eee",
                     height: 60,
                     paddingBottom: 5,
@@ -32,6 +35,7 @@ export function AppRoutes(){
                     return <Ionicons name={iconName} size={size} color={color} />
                 }
             })}
+            sceneContainerStyle={{ backgroundColor: theme.background }}
         >
             <Tab.Screen name="Home" component={HomeScreen} />
             <Tab.Screen name="Paises" component={PaisesScreen} />

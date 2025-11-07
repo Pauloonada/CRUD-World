@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, TouchableOpacity, Alert, Modal, TextInput } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Alert, TextInput, ActivityIndicator } from "react-native";
 import styles from "./styles";
 import Pais from "../../@types/Pais";
 import { getAllPaises, createPais, updatePais, deletePais } from "../../services/paisesService";
 import ModalAdicionarPais from "./ModalAdicionarPais";
 import ModalEditarPais from "./ModalEditarPais";
 import ModalInfoPais from "./ModalInfoPais";
+import { useTheme } from "../../contexts/ThemeContext";
 
 export default function PaisesScreen(){
+    const { theme } = useTheme();
+
     const [paises, setPaises] = useState<Pais[]>([]);
     const [page, setPage] = useState(0);
     const [loading, setLoading] = useState(false);
+    const [loadingMore, setLoadingMore] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [infoPais, setInfopais] = useState<any>(null);
     const [modalAdicionarVisible, setModalAdicionarVisible] = useState(false);
@@ -33,8 +37,8 @@ export default function PaisesScreen(){
     });
 
     async function loadMorePaises(){
-        if(loading) return;
-        setLoading(true);
+        if(loadingMore) return;
+        setLoadingMore(true);
 
         try{
             const nextPage = page + 1;
@@ -43,17 +47,22 @@ export default function PaisesScreen(){
             setPage(nextPage);
         }
         finally{
-            setLoading(false);
+            setLoadingMore(false);
         }
     }
 
     async function handleBuscarPaises(){
+        setLoading(true);
         try{
             const lista = await getAllPaises(50, 0, searchQuery); // 50 paises
             setPaises(lista);
+            setPage(0);
         }catch(error){
             Alert.alert("Erro", "Não foi possível buscar países");
             console.error(error);
+        }
+        finally{
+            setLoading(false);
         }
     }
 
@@ -133,71 +142,80 @@ export default function PaisesScreen(){
     }
 
     useEffect(() => {
-        handleBuscarPaises(); // 
+        handleBuscarPaises(); // Busca os países ao entrar na aba
     }, []);
 
     return(
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme.background }]}>
             <View style={styles.buttonsRow}>
                 <TextInput
-                    style={styles.searchInput}
+                    style={[styles.searchInput, { backgroundColor: theme.inputBackground, color: theme.text }]}
                     placeholder="Digite o nome do país..."
+                    placeholderTextColor={theme.placeholder}
                     value={searchQuery}
                     onChangeText={setSearchQuery}
                 />
 
-                <TouchableOpacity style={styles.button} onPress={handleBuscarPaises}>
-                    <Text style={styles.buttonText}>Buscar</Text>
+                <TouchableOpacity style={[styles.button, { backgroundColor: theme.primary }]} onPress={handleBuscarPaises}>
+                    <Text style={[styles.buttonText, { color: "#fff" }]}>Buscar</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button} onPress={() => setModalAdicionarVisible(true)}>
-                    <Text style={styles.buttonText}>Adicionar</Text>
+                <TouchableOpacity style={[styles.button, {backgroundColor: theme.success, marginLeft: 15}]} onPress={() => setModalAdicionarVisible(true)}>
+                    <Text style={[styles.buttonText, { color: "#fff" }]}>Adicionar</Text>
                 </TouchableOpacity>
             </View>
 
-            <FlatList
-                data={paises}
-                keyExtractor={(item) => String(item.id)}
-                onEndReached={loadMorePaises}
-                onEndReachedThreshold={0.5}
-                renderItem={({ item }) => (
-                    <TouchableOpacity style={styles.row} onPress={() => handleGetInfoPais(item.codigo_iso)}>
-                        <View style={{ flex: 1 }}>
-                            <Text style={styles.cell}>{item.nome_oficial} ({item.codigo_iso})</Text>
-                            <Text style={styles.subCell}>
-                                {item.continente} • {item.idioma_principal} • População: {item.populacao.toLocaleString()}
-                            </Text>
-                        </View>
+            { !loading ? (
+                <>
+                    <FlatList
+                        data={paises}
+                        keyExtractor={(item) => String(item.id)}
+                        onEndReached={loadMorePaises}
+                        onEndReachedThreshold={0.5}
+                        renderItem={({ item }) => (
+                            <TouchableOpacity style={[styles.row, { backgroundColor: theme.card }]} onPress={() => handleGetInfoPais(item.codigo_iso)}>
+                                <View style={{ flex: 1 }}>
+                                    <Text style={[styles.cell, { color: theme.text }]}>{item.nome_oficial} ({item.codigo_iso})</Text>
+                                    <Text style={[styles.subCell, { color: theme.subText }]}>
+                                        {item.continente} • {item.idioma_principal} • População: {item.populacao.toLocaleString()}
+                                    </Text>
+                                </View>
 
-                        <TouchableOpacity onPress={() => openModalEdit(item)}>
-                            <Text style={styles.actionEdit}>Editar</Text>
-                        </TouchableOpacity>
+                                <TouchableOpacity onPress={() => openModalEdit(item)}>
+                                    <Text style={[styles.actionEdit, { color: theme.primary }]}>Editar</Text>
+                                </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => handleExcluirPais(item.id!)}>
-                            <Text style={styles.actionDelete}>Delete</Text>
-                        </TouchableOpacity>
-                    </TouchableOpacity>
+                                <TouchableOpacity onPress={() => handleExcluirPais(item.id!)}>
+                                    <Text style={[styles.actionDelete, { color: theme.error }]}>Delete</Text>
+                                </TouchableOpacity>
+                            </TouchableOpacity>
+                        )}
+                    />
+                    <ModalAdicionarPais
+                        modalVisible={modalAdicionarVisible}
+                        setModalVisible={setModalAdicionarVisible}
+                        novoPais={novoPais}
+                        setNovoPais={setNovoPais}
+                        handleAdicionarPais={handleAdicionarPais}
+                    />
+                    <ModalEditarPais
+                        modalVisible={modalEditarVisible}
+                        setModalVisible={setModalEditarVisible}
+                        paisEditado={paisEditado}
+                        setPaisEditado={setPaisEditado}
+                        handleEditarPais={handleEditarPais}
+                    />
+                    <ModalInfoPais
+                        modalVisible={modalInfoVisible}
+                        setModalVisible={setModalInfoVisible}
+                        paisInfo={infoPais}
+                    />
+                </>
+                ) : (
+                    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+                        <ActivityIndicator size="large" color={theme.primary} />
+                    </View>
                 )}
-            />
-            <ModalAdicionarPais
-                modalVisible={modalAdicionarVisible}
-                setModalVisible={setModalAdicionarVisible}
-                novoPais={novoPais}
-                setNovoPais={setNovoPais}
-                handleAdicionarPais={handleAdicionarPais}
-            />
-            <ModalEditarPais
-                modalVisible={modalEditarVisible}
-                setModalVisible={setModalEditarVisible}
-                paisEditado={paisEditado}
-                setPaisEditado={setPaisEditado}
-                handleEditarPais={handleEditarPais}
-            />
-            <ModalInfoPais
-                modalVisible={modalInfoVisible}
-                setModalVisible={setModalInfoVisible}
-                paisInfo={infoPais}
-            />
         </View>
     );
 }

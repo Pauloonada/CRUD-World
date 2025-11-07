@@ -1,6 +1,7 @@
 import React from "react";
-import { Modal, View, Text, ScrollView, TouchableOpacity, ActivityIndicator } from "react-native";
+import { Modal, View, Text, ScrollView, TouchableOpacity, ActivityIndicator, Image } from "react-native";
 import styles from "./styles";
+import { useTheme } from "../../contexts/ThemeContext";
 
 interface ModalInfoPaisProps{
     modalVisible: boolean;
@@ -13,10 +14,27 @@ export default function ModalInfoPais({
     setModalVisible,
     paisInfo,
 }: ModalInfoPaisProps) {
+    const { theme } = useTheme();
     return(
         <Modal visible={modalVisible} transparent animationType="fade">
         <View style={styles.modalOverlay}>
-            <View style={styles.modalBox}>
+            <View style={[styles.modalBox, { backgroundColor: theme.card }]}>
+                <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 10 }}>
+                    {paisInfo?.flags?.png && (
+                        <Image 
+                            source={{ uri: paisInfo.flags.png }}
+                            style={{
+                                width: 60,
+                                height: 40,
+                                borderRadius: 6,
+                                marginRight: 10,
+                                borderWidth: 1,
+                                borderColor: theme.border
+                            }}
+                            resizeMode="cover"
+                        />
+                    )}
+                </View>
                 <Text style={styles.modalTitle}>
                     {paisInfo?.name?.common || "Informações do país"}
                 </Text>

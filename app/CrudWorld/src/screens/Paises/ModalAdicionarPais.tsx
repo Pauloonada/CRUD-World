@@ -50,7 +50,7 @@ export default function ModalAdicionarPais({
                     />
 
                     <View style={styles.buttonsRow}>
-                    <TouchableOpacity style={styles.button} onPress={handleAdicionarPais}>
+                    <TouchableOpacity style={[styles.button, {backgroundColor: "#36a70d"}]} onPress={handleAdicionarPais}>
                         <Text style={styles.buttonText}>Salvar</Text>
                     </TouchableOpacity>
                     <TouchableOpacity

@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from "@react-navigation/native"
 import { AuthProvider, useAuth } from './src/contexts/AuthContext';
+import { ThemeProvider } from './src/contexts/ThemeContext';
 import { AppRoutes } from './src/navigation/AppRoutes';
 import { AuthRoutes } from './src/navigation/AuthRoutes';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
@@ -21,12 +22,15 @@ function Routes(){
 }
 
 export default function App(){
+
   return (
-    <AuthProvider>
-      <NavigationContainer>
-        <Routes />
-      </NavigationContainer>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <NavigationContainer>
+          <Routes />
+        </NavigationContainer>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
