@@ -1,10 +1,12 @@
 import React from 'react';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from "@react-navigation/native"
 import { AuthProvider, useAuth } from './src/contexts/AuthContext';
-import { ThemeProvider } from './src/contexts/ThemeContext';
+import { ThemeProvider, useTheme } from './src/contexts/ThemeContext';
 import { AppRoutes } from './src/navigation/AppRoutes';
 import { AuthRoutes } from './src/navigation/AuthRoutes';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import Toast from 'react-native-toast-message';
 import "react-native-reanimated"
 
 function Routes(){
@@ -21,17 +23,29 @@ function Routes(){
   return user ? <AppRoutes /> : <AuthRoutes /> // Retorna tela de login caso necessário
 }
 
-export default function App(){
+function ThemedApp(){
+  const { theme } = useTheme();
 
   return (
+        <SafeAreaProvider>
+          <SafeAreaView style={{ flex: 1, backgroundColor: theme.headerColor }}>
+            <NavigationContainer>
+              <Routes />
+            </NavigationContainer>
+            <Toast />
+          </SafeAreaView>
+        </SafeAreaProvider>
+  );
+}
+
+export default function App(){
+  return(
     <ThemeProvider>
       <AuthProvider>
-        <NavigationContainer>
-          <Routes />
-        </NavigationContainer>
+        <ThemedApp />
       </AuthProvider>
     </ThemeProvider>
-  );
+  )
 }
 
 const styles = StyleSheet.create({

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, TouchableOpacity, Alert, TextInput, ActivityIndicator } from "react-native";
+import Toast from "react-native-toast-message";
 import styles from "./styles";
 import Pais from "../../@types/Pais";
 import { getAllPaises, createPais, updatePais, deletePais } from "../../services/paisesService";
@@ -86,8 +87,10 @@ export default function PaisesScreen(){
                 idioma_principal: "",
                 codigo_iso: "",
             });
+			Toast.show({ type: "success", text1: "Sucesso!", text2: "País adicionado com sucesso! 👏" });
         }catch(error){
             Alert.alert("Error", "Falha ao adicionar país: ", error);
+			Toast.show({ type: "error", text1: "Erro!", text2: "Falha ao adicionar país! ⚠️" });
             console.error(error);
         }
     }
@@ -106,8 +109,10 @@ export default function PaisesScreen(){
             );
 
             setModalEditarVisible(false);
+			Toast.show({ type: "success", text1: "Sucesso!", text2: "País editado com sucesso! 👏" });
         }catch(error){
             Alert.alert("Error", "Falha ao editar país");
+			Toast.show({ type: "error", text1: "Erro!", text2: "Falha ao editar país! ⚠️" });
             console.error(error);
         }
     }
@@ -119,8 +124,10 @@ export default function PaisesScreen(){
             setPaises((prev) => prev.filter((p) => p.id !== paisDeletado.id));
             setModalDeletarVisible(false);
             setPaisDeletado(null);
+			Toast.show({ type: "success", text1: "Sucesso!", text2: "País excluido com sucesso! 👏" });
         }catch(error){
             Alert.alert("Erro", "Falha ao excluir o país");
+			Toast.show({ type: "error", text1: "Erro!", text2: "Falha ao excluir país! ⚠️" });
             console.error(error);
         }
     }

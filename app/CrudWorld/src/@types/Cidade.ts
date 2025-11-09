@@ -1,5 +1,5 @@
 type Cidade = {
-    id: number;
+    id?: number;
     nome: string;
     populacao: number;
     id_pais: number;

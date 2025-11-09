@@ -1,4 +1,5 @@
 import { Modal, View, Text, TextInput, TouchableOpacity } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 import ModalEditarPaisProps from "../../@types/ModalEditarPaisProps";
 import { useTheme } from "../../contexts/ThemeContext";
 import styles from "./styles";
@@ -11,6 +12,15 @@ export default function ModalEditarPais({
     handleEditarPais,
 }: ModalEditarPaisProps){
     const { theme } = useTheme();
+
+    const continentes = [
+        "África",
+        "Ámericas",
+        "Ásia",
+        "Europa",
+        "Oceania"
+    ];
+    
     return(
         <Modal visible={modalVisible} transparent animationType="fade">
             <View style={styles.modalOverlay}>
@@ -24,13 +34,14 @@ export default function ModalEditarPais({
                         value={paisEditado.nome_oficial}
                         onChangeText={(v) => setPaisEditado({ ...paisEditado, nome_oficial: v })}
                     />
-                    <TextInput
-                        style={[styles.input, { backgroundColor: theme.inputBackground, color: theme.inputText }]}
-                        placeholder="Continente"
-                        placeholderTextColor={theme.placeholder}
-                        value={paisEditado.continente}
-                        onChangeText={(v) => setPaisEditado({ ...paisEditado, continente: v })}
-                    />
+                    <View style={{ backgroundColor: theme.inputBackground, borderRadius: 8, borderWidth: 1, borderColor: theme.border, marginBottom: 12}}>
+                        <Picker selectedValue={paisEditado.continente} onValueChange={(v) => setPaisEditado({ ...paisEditado, continente: v })} dropdownIconColor={theme.text} style={{ color: theme.text }}>
+                            <Picker.Item label="Selecione o continete" value="" />
+                            {continentes.map((c) => (
+                                <Picker.Item key={c} label={c} value={c} />
+                            ))}
+                        </Picker>
+                    </View>
                     <TextInput
                         style={[styles.input, { backgroundColor: theme.inputBackground, color: theme.inputText }]}
                         placeholder="Idioma principal"

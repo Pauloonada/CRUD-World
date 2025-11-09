@@ -1,6 +1,6 @@
 import Pais from "./Pais";
 
-export default interface ModalAdicionarPaisProps{
+export default interface ModalEditarPaisProps{
     modalVisible: boolean;
     setModalVisible: (visible: boolean) => void;
     paisEditado: Pais;

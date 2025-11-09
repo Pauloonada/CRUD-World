@@ -16,7 +16,7 @@ export function AppRoutes(){
             initialRouteName="Home"
             screenOptions={({ route }) => ({
                 headerStyle: { backgroundColor: theme.headerColor },
-                headerTintColor: theme.text,
+                headerTintColor: "#fff",
                 tabBarActiveTintColor: theme.tabBarActiveColor,
                 tabBarInactiveTintColor: theme.tabIconInactive,
                 tabBarStyle: {
