@@ -38,7 +38,7 @@ export default function ModalExcluirPais({
                         </TouchableOpacity>
 
                         <TouchableOpacity style={[styles.button, { backgroundColor: theme.secondary, flex: 1, marginLeft: 8 }]} onPress={() => setModalVisible(false)}>
-                            <Text style={[styles.buttonText, { color: theme.text }]}>Cancelar</Text>
+                            <Text style={[styles.buttonText, { color: "#fff" }]}>Cancelar</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

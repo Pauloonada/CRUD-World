@@ -54,7 +54,7 @@ export default function ModalEditarCidade({
                     />
                     <View style={{ backgroundColor: theme.inputBackground, borderRadius: 8, borderWidth: 1, borderColor: theme.border, marginBottom: 12}}>
                         <Picker selectedValue={cidadeEditada.id_pais} onValueChange={(v) => setCidadeEditada({ ...cidadeEditada, id_pais: v })} dropdownIconColor={theme.text} style={{ color: theme.text }}>
-                            <Picker.Item label="Selecione o país" value="" />
+                            <Picker.Item label="Selecione o país" value="" style={{ color: "#0005" }} />
                             {paises.map((p) => (
                                 <Picker.Item key={p.id_pais} label={p.nome_oficial} value={p.id_pais} />
                             ))}

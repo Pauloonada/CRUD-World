@@ -5,6 +5,7 @@ import { View, Text, FlatList, TouchableOpacity, Alert, TextInput, ActivityIndic
 import styles from "./styles";
 import Cidade from "../../@types/Cidade";
 import { getAllCidades, createCidade, updateCidade, deleteCidade } from "../../services/cidadesService";
+import { validarNovaCidade, validarEditarCidade } from "../../validators/cidadeValidator";
 import { getAllPaises } from "../../services/paisesService";
 import ModalAdicionarCidade from "./ModalAdicionarCidade";
 import ModalEditarCidade from "./ModalEditarCidade";
@@ -72,8 +73,14 @@ export default function CidadesScreen(){
 
     async function handleAdicionarCidade(){
         try{
-            if(!novaCidade.nome.trim()){
-                Alert.alert("Aviso", "Digite o nome do país");
+            const erro = validarNovaCidade(novaCidade);
+            if(erro){
+                Toast.show({
+                    type: "error",
+                    text1: "Erro",
+                    text2: erro,
+                    props: { backgroundColor: theme.background, color: theme.text }
+                });
                 return;
             }
 
@@ -86,18 +93,24 @@ export default function CidadesScreen(){
                 populacao: 0,
                 id_pais: null,
             });
-            Toast.show({ type: "success", text1: "Sucesso!", text2: "Cidade adicionada com sucesso! 👏" });
+            Toast.show({ type: "success", text1: "Sucesso", text2: "Cidade adicionada com sucesso!" });
         }catch(error){
             Alert.alert("Error", "Falha ao adicionar cidade: ", error);
-            Toast.show({ type: "error", text1: "Erro!", text2: "Falha ao adicionar cidade! ⚠️" });
+            Toast.show({ type: "error", text1: "Erro", text2: "Falha ao adicionar cidade!" });
             console.error(error);   
         }
     }
 
     async function handleEditarCidade(){
         try{
-            if(!cidadeEditada.nome.trim()){
-                Alert.alert("Aviso", "Digite o nome da cidade");
+            const erro = validarEditarCidade(cidadeEditada);
+            if(erro){
+                Toast.show({
+                    type: "error",
+                    text1: "Erro",
+                    text2: erro,
+                    props: { backgroundColor: theme.background, color: theme.text }
+                });
                 return;
             }
 
@@ -108,10 +121,10 @@ export default function CidadesScreen(){
             );
 
             setModalEditarVisible(false);
-            Toast.show({ type: "success", text1: "Sucesso!", text2: "Cidade editada com sucesso! 👏" });
+            Toast.show({ type: "success", text1: "Sucesso", text2: "Cidade editada com sucesso!" });
         }catch(error){
             Alert.alert("Error", "Falha ao editar cidade");
-            Toast.show({ type: "error", text1: "Erro!", text2: "Falha ao editar cidade! ⚠️" });
+            Toast.show({ type: "error", text1: "Erro", text2: "Falha ao editar cidade!" });
             console.error(error);
         }
     }
@@ -123,10 +136,10 @@ export default function CidadesScreen(){
             setCidades((prev) => prev.filter((c) => c.id !== cidadeDeletada.id));
             setModalDeletarVisible(false);
             setCidadeDeletada(null);
-            Toast.show({ type: "success", text1: "Sucesso!", text2: "Cidade excluida com sucesso! 👏" });
+            Toast.show({ type: "success", text1: "Sucesso", text2: "Cidade excluida com sucesso!" });
         }catch(error){
             Alert.alert("Erro", "Falha ao excluir a cidade");
-            Toast.show({ type: "error", text1: "Erro!", text2: "Falha ao excluir cidade! ⚠️" });
+            Toast.show({ type: "error", text1: "Erro", text2: "Falha ao excluir cidade!" });
             console.error(error);
         }
     }

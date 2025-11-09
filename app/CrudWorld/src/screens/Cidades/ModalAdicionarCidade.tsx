@@ -45,7 +45,7 @@ export default function ModalAdicionarCidade({
                     
                     <View style={{ backgroundColor: theme.inputBackground, borderRadius: 8, borderWidth: 1, borderColor: theme.border, marginBottom: 12}}>
                         <Picker selectedValue={novaCidade.id_pais} onValueChange={(v) => setNovaCidade({ ...novaCidade, id_pais: v })} dropdownIconColor={theme.text} style={{ color: theme.text }}>
-                            <Picker.Item label="Selecione o continete" value="" />
+                            <Picker.Item label="Selecione o país" value="" style={{ color: "#0005" }} />
                             {paises.map((p) => (
                                 <Picker.Item key={p.id} label={p.nome_oficial} value={p.id} />
                             ))}

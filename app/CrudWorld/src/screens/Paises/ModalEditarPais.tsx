@@ -36,7 +36,7 @@ export default function ModalEditarPais({
                     />
                     <View style={{ backgroundColor: theme.inputBackground, borderRadius: 8, borderWidth: 1, borderColor: theme.border, marginBottom: 12}}>
                         <Picker selectedValue={paisEditado.continente} onValueChange={(v) => setPaisEditado({ ...paisEditado, continente: v })} dropdownIconColor={theme.text} style={{ color: theme.text }}>
-                            <Picker.Item label="Selecione o continete" value="" />
+                            <Picker.Item label="Selecione o continente" value="" style={{ color: "#0005" }} />
                             {continentes.map((c) => (
                                 <Picker.Item key={c} label={c} value={c} />
                             ))}
@@ -69,14 +69,14 @@ export default function ModalEditarPais({
 
                     <View style={styles.buttonsRow}>
                         <TouchableOpacity style={[styles.button, { backgroundColor: theme.success }]} onPress={handleEditarPais}>
-                            <Text style={[styles.buttonText, { color: theme.text }]}>Salvar</Text>
+                            <Text style={[styles.buttonText, { color: "#fff" }]}>Salvar</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             style={[styles.button, { backgroundColor: theme.secondary }]}
                             onPress={() => setModalVisible(false)}
                         >
-                            <Text style={[styles.buttonText, { color: theme.text }]}>Cancelar</Text>
+                            <Text style={[styles.buttonText, { color: "#fff" }]}>Cancelar</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

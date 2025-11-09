@@ -7,6 +7,7 @@ import { AppRoutes } from './src/navigation/AppRoutes';
 import { AuthRoutes } from './src/navigation/AuthRoutes';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
 import Toast from 'react-native-toast-message';
+import { toastConfig } from './src/misc/toastConfig';
 import "react-native-reanimated"
 
 function Routes(){
@@ -32,7 +33,7 @@ function ThemedApp(){
             <NavigationContainer>
               <Routes />
             </NavigationContainer>
-            <Toast />
+            <Toast config={toastConfig} />
           </SafeAreaView>
         </SafeAreaProvider>
   );
