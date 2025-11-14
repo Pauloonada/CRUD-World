@@ -29,7 +29,7 @@ Hospedagem no **Railway**, tanto do **site (PHP + Front End)** quanto do **banco
 - **Back End**: TypeScript e PHP
 - **Banco de Dados**: PostgreSQL
 - **APIs**: REST Countries, OpenWeatherMap  
-- **Hospedagem**: [Railway](crudworld.up.railway.app)
+- **Hospedagem**: [Railway](https://crudworld.up.railway.app)
 
 ---
 
